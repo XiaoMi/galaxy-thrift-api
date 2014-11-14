@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: Errors</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: Errors</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>Errors</td><td></td>
+<td><a href="#Enum_ErrorCode">ErrorCode</a><br/>
+<a href="#Enum_HttpStatusCode">HttpStatusCode</a><br/>
+<a href="#Struct_ServiceException">ServiceException</a><br/>
+</td>
+<td><code><a href="#Const_ERROR_AUTO_BACKOFF">ERROR_AUTO_BACKOFF</a></code><br/>
+<code><a href="#Const_MAX_RETRY">MAX_RETRY</a></code><br/>
+</code></td>
+</tr></table>
+<hr/><h2 id="Constants">Constants</h2>
+<table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
+<tr id="Const_ERROR_AUTO_BACKOFF"><td><code>ERROR_AUTO_BACKOFF</code></td><td><code>map&lt;<code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code>, <code>i32</code>&gt;</code></td><td><code>{ <code><a href="#Const_ErrorCode.SERVICE_UNAVAILABLE">ErrorCode.SERVICE_UNAVAILABLE</a></code> = 1000, <code><a href="#Const_ErrorCode.THROUGHPUT_EXCEED">ErrorCode.THROUGHPUT_EXCEED</a></code> = 1000, <code><a href="#Const_ErrorCode.CLOCK_TOO_SKEWED">ErrorCode.CLOCK_TOO_SKEWED</a></code> = 0 }</code></td></tr><tr><td colspan="3"><blockquote>SDK自动重试的错误码及回退(backoff)基准时间，
+等待时间 = 2 ^ 重试次数 * 回退基准时间
+<br/></blockquote></td></tr><tr id="Const_MAX_RETRY"><td><code>MAX_RETRY</code></td><td><code>i32</code></td><td><code>1</code></td></tr><tr><td colspan="3"><blockquote>抛出异常之前最大重试次数
+<br/></blockquote></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_HttpStatusCode">Enumeration: HttpStatusCode</h3>
+HTTP状态码列表，用于传输层，签名错误等
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>BAD_REQUEST</code></td><td><code>400</code></td><td>
+请求格式错误，常见原因为请求参数错误导致服务端反序列化失败
+<br/></td></tr>
+<tr><td><code>INVALID_AUTH</code></td><td><code>401</code></td><td>
+无效的认证信息，一般为签名错误
+<br/></td></tr>
+<tr><td><code>CLOCK_TOO_SKEWED</code></td><td><code>412</code></td><td>
+客户端时钟不同步，服务端拒绝(为防止签名的重放攻击)
+<br/></td></tr>
+<tr><td><code>REQUEST_TOO_LARGE</code></td><td><code>413</code></td><td>
+HTTP请求过大
+<br/></td></tr>
+<tr><td><code>INTERNAL_ERROR</code></td><td><code>500</code></td><td>
+内部错误
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_ErrorCode">Enumeration: ErrorCode</h3>
+错误码列表，用于逻辑层错误
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>INTERNAL_ERROR</code></td><td><code>1</code></td><td>
+系统内部错误
+<br/></td></tr>
+<tr><td><code>SERVICE_UNAVAILABLE</code></td><td><code>2</code></td><td>
+系统不可用
+<br/></td></tr>
+<tr><td><code>UNKNOWN</code></td><td><code>3</code></td><td>
+未知错误
+<br/></td></tr>
+<tr><td><code>END_OF_INTERNAL_ERROR</code></td><td><code>20</code></td><td>
+</td></tr>
+<tr><td><code>ACCESS_DENIED</code></td><td><code>21</code></td><td>
+无访问对应资源权限
+<br/></td></tr>
+<tr><td><code>VALIDATION_FAILED</code></td><td><code>22</code></td><td>
+无效参数
+<br/></td></tr>
+<tr><td><code>SIZE_EXCEED</code></td><td><code>23</code></td><td>
+长度超限(大小，数目等)
+<br/></td></tr>
+<tr><td><code>QUOTA_EXCEED</code></td><td><code>24</code></td><td>
+空间配额超限
+<br/></td></tr>
+<tr><td><code>THROUGHPUT_EXCEED</code></td><td><code>25</code></td><td>
+表读写配额超限
+<br/></td></tr>
+<tr><td><code>RESOURCE_NOT_FOUND</code></td><td><code>26</code></td><td>
+资源不存在(如表，应用)
+<br/></td></tr>
+<tr><td><code>RESOURCE_ALREADY_EXISTS</code></td><td><code>27</code></td><td>
+资源已存在(如表)
+<br/></td></tr>
+<tr><td><code>RESOURCE_UNAVAILABLE</code></td><td><code>28</code></td><td>
+资源暂时不可用(如表并发管理操作加锁尚未释放)
+<br/></td></tr>
+<tr><td><code>UNSUPPORTED_VERSION</code></td><td><code>29</code></td><td>
+客户端API版本不支持
+<br/></td></tr>
+<tr><td><code>UNSUPPORTED_OPERATION</code></td><td><code>30</code></td><td>
+暂时不支持的操作
+<br/></td></tr>
+<tr><td><code>INVALID_AUTH</code></td><td><code>31</code></td><td>
+无效的认证信息(签名不正确，不包含签名过期)
+<br/></td></tr>
+<tr><td><code>CLOCK_TOO_SKEWED</code></td><td><code>32</code></td><td>
+客户端时钟不同步
+<br/></td></tr>
+<tr><td><code>REQUEST_TOO_LARGE</code></td><td><code>33</code></td><td>
+HTTP请求过大
+<br/></td></tr>
+<tr><td><code>BAD_REQUEST</code></td><td><code>34</code></td><td>
+无效请求
+<br/></td></tr>
+</table></div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_ServiceException">Exception: ServiceException</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>errorCode</td><td><code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code></td><td>错误码
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>errorMessage</td><td><code>string</code></td><td>错误信息
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>details</td><td><code>string</code></td><td>错误信息细节
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>callId</td><td><code>string</code></td><td>RPC调用标识
+</td><td>optional</td><td></td></tr>
+</table><br/>RPC调用错误
+<br/></div></div></body></html>

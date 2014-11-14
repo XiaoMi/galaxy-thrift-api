@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: Table</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: Table</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>Table</td><td><a href="#Svc_TableService">TableService</a><br/>
+<ul>
+<li><a href="#Fn_TableService_batch">batch</a></li>
+<li><a href="#Fn_TableService_get">get</a></li>
+<li><a href="#Fn_TableService_increment">increment</a></li>
+<li><a href="#Fn_TableService_put">put</a></li>
+<li><a href="#Fn_TableService_remove">remove</a></li>
+<li><a href="#Fn_TableService_scan">scan</a></li>
+</ul>
+</td>
+<td><a href="#Typedef_AclConf">AclConf</a><br/>
+<a href="#Typedef_Attributes">Attributes</a><br/>
+<a href="#Enum_BatchOp">BatchOp</a><br/>
+<a href="#Struct_BatchRequest">BatchRequest</a><br/>
+<a href="#Struct_BatchRequestItem">BatchRequestItem</a><br/>
+<a href="#Struct_BatchResult">BatchResult</a><br/>
+<a href="#Struct_BatchResultItem">BatchResultItem</a><br/>
+<a href="#Enum_CannedAcl">CannedAcl</a><br/>
+<a href="#Enum_DataType">DataType</a><br/>
+<a href="#Struct_Datum">Datum</a><br/>
+<a href="#Typedef_Dictionary">Dictionary</a><br/>
+<a href="#Struct_EntityGroupSpec">EntityGroupSpec</a><br/>
+<a href="#Struct_GetRequest">GetRequest</a><br/>
+<a href="#Struct_GetResult">GetResult</a><br/>
+<a href="#Struct_IncrementRequest">IncrementRequest</a><br/>
+<a href="#Struct_IncrementResult">IncrementResult</a><br/>
+<a href="#Typedef_IndexSpec">IndexSpec</a><br/>
+<a href="#Struct_KeySpec">KeySpec</a><br/>
+<a href="#Struct_LocalSecondaryIndexSpec">LocalSecondaryIndexSpec</a><br/>
+<a href="#Enum_OperatorType">OperatorType</a><br/>
+<a href="#Struct_ProvisionThroughput">ProvisionThroughput</a><br/>
+<a href="#Struct_PutRequest">PutRequest</a><br/>
+<a href="#Struct_PutResult">PutResult</a><br/>
+<a href="#Struct_RemoveRequest">RemoveRequest</a><br/>
+<a href="#Struct_RemoveResult">RemoveResult</a><br/>
+<a href="#Struct_Request">Request</a><br/>
+<a href="#Struct_Result">Result</a><br/>
+<a href="#Struct_ScanRequest">ScanRequest</a><br/>
+<a href="#Struct_ScanResult">ScanResult</a><br/>
+<a href="#Enum_SecondaryIndexConsistencyMode">SecondaryIndexConsistencyMode</a><br/>
+<a href="#Struct_SimpleCondition">SimpleCondition</a><br/>
+<a href="#Struct_TableInfo">TableInfo</a><br/>
+<a href="#Struct_TableMetadata">TableMetadata</a><br/>
+<a href="#Struct_TableQuota">TableQuota</a><br/>
+<a href="#Struct_TableSchema">TableSchema</a><br/>
+<a href="#Struct_TableSpec">TableSpec</a><br/>
+<a href="#Struct_TableSplit">TableSplit</a><br/>
+<a href="#Enum_TableState">TableState</a><br/>
+<a href="#Struct_TableStatus">TableStatus</a><br/>
+<a href="#Struct_Value">Value</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_DataType">Enumeration: DataType</h3>
+数据类型
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>BOOL</code></td><td><code>1</code></td><td>
+布尔类型
+<br/></td></tr>
+<tr><td><code>INT8</code></td><td><code>2</code></td><td>
+1字节整形
+<br/></td></tr>
+<tr><td><code>INT16</code></td><td><code>3</code></td><td>
+2字节整形
+<br/></td></tr>
+<tr><td><code>INT32</code></td><td><code>4</code></td><td>
+4字节整形
+<br/></td></tr>
+<tr><td><code>INT64</code></td><td><code>5</code></td><td>
+8字节整形
+<br/></td></tr>
+<tr><td><code>FLOAT</code></td><td><code>6</code></td><td>
+单精度浮点类型
+<br/></td></tr>
+<tr><td><code>DOUBLE</code></td><td><code>7</code></td><td>
+双精度浮点类型
+<br/></td></tr>
+<tr><td><code>STRING</code></td><td><code>8</code></td><td>
+字符串类型
+<br/></td></tr>
+<tr><td><code>BINARY</code></td><td><code>9</code></td><td>
+编码二进制类型，可用做索引属性
+<br/></td></tr>
+<tr><td><code>RAWBINARY</code></td><td><code>10</code></td><td>
+原生二进制类型，存储序列化开销最小，不能包含'0x00'数据，不可用做索引
+<br/></td></tr>
+<tr><td><code>BOOL_SET</code></td><td><code>100</code></td><td>
+布尔类型集合
+<br/></td></tr>
+<tr><td><code>INT8_SET</code></td><td><code>101</code></td><td>
+1字节整形集合
+<br/></td></tr>
+<tr><td><code>INT16_SET</code></td><td><code>102</code></td><td>
+2字节整形集合
+<br/></td></tr>
+<tr><td><code>INT32_SET</code></td><td><code>103</code></td><td>
+4字节整形集合
+<br/></td></tr>
+<tr><td><code>INT64_SET</code></td><td><code>104</code></td><td>
+8字节整形集合
+<br/></td></tr>
+<tr><td><code>FLOAT_SET</code></td><td><code>105</code></td><td>
+单精度浮点集合
+<br/></td></tr>
+<tr><td><code>DOUBLE_SET</code></td><td><code>106</code></td><td>
+双精度浮点集合
+<br/></td></tr>
+<tr><td><code>STRING_SET</code></td><td><code>107</code></td><td>
+字符串集合
+<br/></td></tr>
+<tr><td><code>BINARY_SET</code></td><td><code>108</code></td><td>
+编码二进制集合
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_OperatorType">Enumeration: OperatorType</h3>
+操作符类型
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>EQUAL</code></td><td><code>1</code></td><td>
+等于
+<br/></td></tr>
+<tr><td><code>NOT_EQUAL</code></td><td><code>2</code></td><td>
+不等于
+<br/></td></tr>
+<tr><td><code>GREATER</code></td><td><code>3</code></td><td>
+大于
+<br/></td></tr>
+<tr><td><code>GREATER_OR_EQUAL</code></td><td><code>4</code></td><td>
+大于等于
+<br/></td></tr>
+<tr><td><code>LESS</code></td><td><code>5</code></td><td>
+小于
+<br/></td></tr>
+<tr><td><code>LESS_OR_EQUAL</code></td><td><code>6</code></td><td>
+小于等于
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_SecondaryIndexConsistencyMode">Enumeration: SecondaryIndexConsistencyMode</h3>
+索引数据一致性类型
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>LAZY</code></td><td><code>0</code></td><td>
+读取时判断索引一致性，此模式不能进行属性projection
+<br/></td></tr>
+<tr><td><code>EAGER</code></td><td><code>1</code></td><td>
+写入时保持索引一致性
+<br/></td></tr>
+<tr><td><code>IMMUTABLE</code></td><td><code>2</code></td><td>
+适用于只读数据，写入后不再修改，写入时采用LAZY方式，读
+取时采用EAGER方式
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_CannedAcl">Enumeration: CannedAcl</h3>
+ACL模板，针对每个应用进行设置，
+开发者登录可以访问所拥有的表数据，无需额外设置
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>APP_SECRET_READ</code></td><td><code>1</code></td><td>
+App Secret登录读整表权限
+<br/></td></tr>
+<tr><td><code>APP_SECRET_WRITE</code></td><td><code>2</code></td><td>
+App Secret登录写整表权限
+<br/></td></tr>
+<tr><td><code>APP_USER_ENTITY_GROUP_READ</code></td><td><code>3</code></td><td>
+应用登录用户对Entity Group等于用户ID的记录的读权限，
+如果表没有设置Entity Group支持，此设置无效，
+授权后，不自动授予App Secret登录对应权限，必须单独设置
+<br/></td></tr>
+<tr><td><code>APP_USER_ENTITY_GROUP_WRITE</code></td><td><code>4</code></td><td>
+应用登录用户对Entity Group等于用户ID的记录的写权限，
+如果表没有设置Entity Group支持，此设置无效，
+授权后，不自动授予App Secret登录对应权限，必须单独设置
+<br/></td></tr>
+<tr><td><code>APP_USER_READ</code></td><td><code>5</code></td><td>
+应用登录用户读整表权限(授权后，App Secret登录会自动拥有对应权限)
+<br/></td></tr>
+<tr><td><code>APP_USER_WRITE</code></td><td><code>6</code></td><td>
+应用登录用户写整表权限(授权后，App Secret登录会自动拥有对应权限)
+<br/></td></tr>
+<tr><td><code>PUBLIC_READ</code></td><td><code>7</code></td><td>
+匿名用户读整表权限(授权后，App登录用户和App Secret登录用户会自动拥有对应权限)
+<br/></td></tr>
+<tr><td><code>PUBLIC_WRITE</code></td><td><code>8</code></td><td>
+匿名用户写整表权限(授权后，App登录用户和App Secret登录用户会自动拥有对应权限)
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_TableState">Enumeration: TableState</h3>
+表状态
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>CREATING</code></td><td><code>1</code></td><td>
+正在创建，不可操作
+<br/></td></tr>
+<tr><td><code>ENABLING</code></td><td><code>2</code></td><td>
+正在开启，不可操作
+<br/></td></tr>
+<tr><td><code>ENABLED</code></td><td><code>3</code></td><td>
+开启状态，可读写
+<br/></td></tr>
+<tr><td><code>DISABLING</code></td><td><code>4</code></td><td>
+正在关闭，不可操作
+<br/></td></tr>
+<tr><td><code>DISABLED</code></td><td><code>5</code></td><td>
+关闭状态，不可读写
+<br/></td></tr>
+<tr><td><code>DELETING</code></td><td><code>6</code></td><td>
+正在删除，不可操作
+<br/></td></tr>
+<tr><td><code>DELETED</code></td><td><code>7</code></td><td>
+已删除，不可见
+<br/></td></tr>
+<tr><td><code>LAZY_DELETE</code></td><td><code>8</code></td><td>
+延迟删除, 可见
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_BatchOp">Enumeration: BatchOp</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>GET</code></td><td><code>1</code></td><td>
+</td></tr>
+<tr><td><code>PUT</code></td><td><code>2</code></td><td>
+</td></tr>
+<tr><td><code>INCREMENT</code></td><td><code>3</code></td><td>
+</td></tr>
+<tr><td><code>REMOVE</code></td><td><code>4</code></td><td>
+</td></tr>
+</table></div>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_IndexSpec">Typedef: IndexSpec</h3>
+<p><strong>Base type:</strong>&nbsp;<code>list&lt;<code><a href="Table.html#Struct_KeySpec">KeySpec</a></code>&gt;</code></p>
+索引(Entity Group，主键或二级索引)的定义，为有序的属性列表
+<br/></div>
+<div class="definition"><h3 id="Typedef_Attributes">Typedef: Attributes</h3>
+<p><strong>Base type:</strong>&nbsp;<code>list&lt;<code>string</code>&gt;</code></p>
+属性列表，元素不能重复(PHP不支持set)
+<br/></div>
+<div class="definition"><h3 id="Typedef_AclConf">Typedef: AclConf</h3>
+<p><strong>Base type:</strong>&nbsp;<code>map&lt;<code>string</code>, <code>list&lt;<code><a href="Table.html#Enum_CannedAcl">CannedAcl</a></code>&gt;</code>&gt;</code></p>
+ACL设置，为appId到其配置的权限的映射
+<br/></div>
+<div class="definition"><h3 id="Typedef_Dictionary">Typedef: Dictionary</h3>
+<p><strong>Base type:</strong>&nbsp;<code>map&lt;<code>string</code>, <code><a href="Table.html#Struct_Datum">Datum</a></code>&gt;</code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_Value">Union: Value</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>boolValue</td><td><code>bool</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>int8Value</td><td><code>byte</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>int16Value</td><td><code>i16</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>int32Value</td><td><code>i32</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>int64Value</td><td><code>i64</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>doubleValue</td><td><code>double</code></td><td>用于FLOAT/DOUBLE类型
+</td><td>optional</td><td></td></tr>
+<tr><td>7</td><td>stringValue</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>8</td><td>binaryValue</td><td><code>binary</code></td><td>用于BINARY/RAWBINARY类型
+</td><td>optional</td><td></td></tr>
+<tr><td>9</td><td>boolSetValue</td><td><code>list&lt;<code>bool</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>10</td><td>int8SetValue</td><td><code>list&lt;<code>byte</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>11</td><td>int16SetValue</td><td><code>list&lt;<code>i16</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>12</td><td>int32SetValue</td><td><code>list&lt;<code>i32</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>13</td><td>int64SetValue</td><td><code>list&lt;<code>i64</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>14</td><td>doubleSetValue</td><td><code>list&lt;<code>double</code>&gt;</code></td><td>用于FLOAT/DOUBLE类型集合
+</td><td>optional</td><td></td></tr>
+<tr><td>15</td><td>stringSetValue</td><td><code>list&lt;<code>string</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>16</td><td>binarySetValue</td><td><code>list&lt;<code>binary</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>20</td><td>nullValue</td><td><code>bool</code></td><td>null，只用于RC_BASIC存储格式
+</td><td>optional</td><td></td></tr>
+</table><br/>数据值union类型
+<br/></div><div class="definition"><h3 id="Struct_Datum">Struct: Datum</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>type</td><td><code><a href="Table.html#Enum_DataType">DataType</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>value</td><td><code><a href="Table.html#Struct_Value">Value</a></code></td><td></td><td>required</td><td></td></tr>
+</table><br/>数据单元
+<br/></div><div class="definition"><h3 id="Struct_ProvisionThroughput">Struct: ProvisionThroughput</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>readQps</td><td><code>i64</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>writeQps</td><td><code>i64</code></td><td></td><td>required</td><td></td></tr>
+</table><br/>吞吐量配额
+<br/></div><div class="definition"><h3 id="Struct_TableQuota">Struct: TableQuota</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>size</td><td><code>i64</code></td><td>空间配额，单位为字节
+</td><td>required</td><td></td></tr>
+</table><br/>空间配额
+<br/></div><div class="definition"><h3 id="Struct_KeySpec">Struct: KeySpec</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>attribute</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>asc</td><td><code>bool</code></td><td></td><td>optional</td><td><code>true</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_LocalSecondaryIndexSpec">Struct: LocalSecondaryIndexSpec</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>indexSchema</td><td><code><a href="Table.html#Typedef_IndexSpec">IndexSpec</a></code></td><td>索引定义
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>projections</td><td><code><a href="Table.html#Typedef_Attributes">Attributes</a></code></td><td>映射的属性，仅当索引类型为Eager时才可设置
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>consistencyMode</td><td><code><a href="Table.html#Enum_SecondaryIndexConsistencyMode">SecondaryIndexConsistencyMode</a></code></td><td>索引数据一致性模式
+</td><td>optional</td><td><code><code><a href="#Const_SecondaryIndexConsistencyMode.LAZY">SecondaryIndexConsistencyMode.LAZY</a></code></code></td></tr>
+<tr><td>4</td><td>unique</td><td><code>bool</code></td><td>是否为唯一索引
+</td><td>optional</td><td><code>false</code></td></tr>
+</table><br/>局部二级索引定义
+<br/></div><div class="definition"><h3 id="Struct_EntityGroupSpec">Struct: EntityGroupSpec</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>attributes</td><td><code><a href="Table.html#Typedef_IndexSpec">IndexSpec</a></code></td><td>属性有序列表
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>enableHash</td><td><code>bool</code></td><td>是否对属性进行哈希分布:
+开启后表中记录按照(hash(attribute value), attribute value)大小顺序分布
+</td><td>optional</td><td><code>true</code></td></tr>
+</table><br/>EntityGroup定义
+<br/></div><div class="definition"><h3 id="Struct_TableSchema">Struct: TableSchema</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>version</td><td><code>i32</code></td><td>Schema版本号，仅作为输出，作为输入不需要设置
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>entityGroup</td><td><code><a href="Table.html#Struct_EntityGroupSpec">EntityGroupSpec</a></code></td><td>Entity group定义, 不设置表示不开启Entity Group支持。
+开启后自动支持应用用户表空间隔离(需配合相应权限设置),
+即每个应用用户将看到独立的表空间
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>primaryIndex</td><td><code><a href="Table.html#Typedef_IndexSpec">IndexSpec</a></code></td><td>主键定义
+</td><td>default</td><td></td></tr>
+<tr><td>4</td><td>secondaryIndexes</td><td><code>map&lt;<code>string</code>, <code><a href="Table.html#Struct_LocalSecondaryIndexSpec">LocalSecondaryIndexSpec</a></code>&gt;</code></td><td>二级索引定义
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>attributes</td><td><code>map&lt;<code>string</code>, <code><a href="Table.html#Enum_DataType">DataType</a></code>&gt;</code></td><td>属性定义
+</td><td>required</td><td></td></tr>
+<tr><td>6</td><td>ttl</td><td><code>i32</code></td><td>记录存活时间，单位为秒。-1表示不会自动删除
+</td><td>optional</td><td><code>-1</code></td></tr>
+<tr><td>7</td><td>preSplits</td><td><code>i32</code></td><td>表初始分片数目，仅支持Entity Group开启hash分布的表，且仅在建表时起作用
+</td><td>optional</td><td><code>1</code></td></tr>
+</table><br/>表Schema设置
+<br/></div><div class="definition"><h3 id="Struct_TableMetadata">Struct: TableMetadata</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tableId</td><td><code>string</code></td><td>表ID
+仅作为输出值，作为输入时无需指定
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>developerId</td><td><code>string</code></td><td>所有者的开发者ID，
+对于CreateTable/AlterTable，值不设置时，默认为当前登录用户。
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>appAcl</td><td><code><a href="Table.html#Typedef_AclConf">AclConf</a></code></td><td>权限控制设置
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>quota</td><td><code><a href="Table.html#Struct_TableQuota">TableQuota</a></code></td><td>空间配额
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>throughput</td><td><code><a href="Table.html#Struct_ProvisionThroughput">ProvisionThroughput</a></code></td><td>吞吐量配额
+</td><td>optional</td><td></td></tr>
+</table><br/>表元信息
+<br/></div><div class="definition"><h3 id="Struct_TableSpec">Struct: TableSpec</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>schema</td><td><code><a href="Table.html#Struct_TableSchema">TableSchema</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>metadata</td><td><code><a href="Table.html#Struct_TableMetadata">TableMetadata</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>表配置信息
+<br/></div><div class="definition"><h3 id="Struct_TableStatus">Struct: TableStatus</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>state</td><td><code><a href="Table.html#Enum_TableState">TableState</a></code></td><td>表状态
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>createTime</td><td><code>i64</code></td><td>创建时间
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>alterTime</td><td><code>i64</code></td><td>最近修改时间
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>statTime</td><td><code>i64</code></td><td>最近统计时间
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>size</td><td><code>i64</code></td><td>占用空间统计，单位为字节
+</td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>rowCount</td><td><code>i64</code></td><td>行数统计，非即时精确值
+</td><td>optional</td><td></td></tr>
+</table><br/>表状态信息
+<br/></div><div class="definition"><h3 id="Struct_TableInfo">Struct: TableInfo</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>spec</td><td><code><a href="Table.html#Struct_TableSpec">TableSpec</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>status</td><td><code><a href="Table.html#Struct_TableStatus">TableStatus</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>表信息
+<br/></div><div class="definition"><h3 id="Struct_SimpleCondition">Struct: SimpleCondition</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>operator</td><td><code><a href="Table.html#Enum_OperatorType">OperatorType</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>field</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>3</td><td>value</td><td><code><a href="Table.html#Struct_Datum">Datum</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>简单条件，用于checkAndPut/Delete操作，判定逻辑为: value operator field
+<br/></div><div class="definition"><h3 id="Struct_TableSplit">Struct: TableSplit</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>startKey</td><td><code>map&lt;<code>string</code>, <code><a href="Table.html#Struct_Datum">Datum</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>stopKey</td><td><code>map&lt;<code>string</code>, <code><a href="Table.html#Struct_Datum">Datum</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>表分片信息，包括起始和结束的row key
+<br/></div><div class="definition"><h3 id="Struct_GetRequest">Struct: GetRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>keys</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>记录主键，必须包含主键所有的属性
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>attributes</td><td><code><a href="Table.html#Typedef_Attributes">Attributes</a></code></td><td>需要返回的属性列表，不指定表示返回所有属性
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetResult">Struct: GetResult</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>item</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_PutRequest">Struct: PutRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>record</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>待写入的记录
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>condition</td><td><code><a href="Table.html#Struct_SimpleCondition">SimpleCondition</a></code></td><td>仅当满足指定条件时执行写入操作
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_PutResult">Struct: PutResult</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>success</td><td><code>bool</code></td><td>写入操作是否被执行(是否满足设置的条件)
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_IncrementRequest">Struct: IncrementRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>keys</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>待自增的记录主键
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>amounts</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>需要进行自增操作的属性，必须为整形，且不能为索引属性
+</td><td>required</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_IncrementResult">Struct: IncrementResult</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>amounts</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RemoveRequest">Struct: RemoveRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>keys</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>待删除的记录主键
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>attributes</td><td><code><a href="Table.html#Typedef_Attributes">Attributes</a></code></td><td>待删除的属性列表，不指定表示删除整条记录。
+当删除部分属性时，即使所有属性均已被删除，记录仍存在，删除整条记录需要显式删除
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>condition</td><td><code><a href="Table.html#Struct_SimpleCondition">SimpleCondition</a></code></td><td>仅当满足指定条件时执行删除操作
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RemoveResult">Struct: RemoveResult</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>success</td><td><code>bool</code></td><td>删除操作是否被执行（是否满足设置的条件）
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ScanRequest">Struct: ScanRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>indexName</td><td><code>string</code></td><td>不指定表示通过主键进行查询
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>startKey</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>查询范围开始，包含startKey，
+如果startKey不是完整键，而是部分key的前缀，则实际查询的startKey为{startKey, 小可能的后缀}补全形式
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>stopKey</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>查询范围结束，不包含stopKey，
+如果stopKey不是完整键，而是部分key的前缀，则实际查询的stopKey为{stopKey, 最大可能的后缀}补全形式
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>attributes</td><td><code><a href="Table.html#Typedef_Attributes">Attributes</a></code></td><td>需要返回的属性列表，不指定表示返回所有属性
+</td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>condition</td><td><code>string</code></td><td>类SQL WHERE语句的查询条件。
+注意：与SQL不同，此条件仅作为过滤条件，不影响具体查询计划(index, startKey, endKey)，
+进行范围查询时需要显示设置index和startKey以及endKey。每个扫描的记录均计入读配额，
+即使不满足查询条件。尽量避免使用条件过滤，尤其是当过滤掉的记录占一半以上时，强烈不建议使用。
+</td><td>optional</td><td></td></tr>
+<tr><td>7</td><td>limit</td><td><code>i32</code></td><td>返回记录的最大数目，返回数目可能小于此值(如超出表的读配额时)
+</td><td>optional</td><td><code>10</code></td></tr>
+<tr><td>8</td><td>reverse</td><td><code>bool</code></td><td>是否进行逆序扫描，进行逆序扫描时startKey应大于endKey，
+注意：逆序查询效率较低，谨慎使用，建议设置对应的Key为逆序存储
+</td><td>optional</td><td><code>false</code></td></tr>
+<tr><td>9</td><td>inGlobalOrder</td><td><code>bool</code></td><td>是否全局有序扫描
+</td><td>optional</td><td><code>true</code></td></tr>
+<tr><td>10</td><td>cacheResult</td><td><code>bool</code></td><td>是否将结果放入cache，对于类似MapReduce的大批量扫描的应用应该关闭此选项
+</td><td>optional</td><td><code>true</code></td></tr>
+</table><br/>范围查询，支持主键和二级索引查询，
+查询范围为闭开区间[startKey, endKey)，
+当指定索引时，查询范围的entity group必须唯一指定
+<br/></div><div class="definition"><h3 id="Struct_ScanResult">Struct: ScanResult</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>nextStartKey</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>下一个需要扫描的记录主键，NULL表示达到制定的结束位置
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>records</td><td><code>list&lt;<code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code>&gt;</code></td><td>扫描的记录
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Request">Union: Request</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>getRequest</td><td><code><a href="Table.html#Struct_GetRequest">GetRequest</a></code></td><td>随机读操作
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>putRequest</td><td><code><a href="Table.html#Struct_PutRequest">PutRequest</a></code></td><td>写入操作，不支持条件
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>incrementRequest</td><td><code><a href="Table.html#Struct_IncrementRequest">IncrementRequest</a></code></td><td>自增操作
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>removeRequest</td><td><code><a href="Table.html#Struct_RemoveRequest">RemoveRequest</a></code></td><td>删除操作，不支持条件
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_BatchRequestItem">Struct: BatchRequestItem</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>action</td><td><code><a href="Table.html#Enum_BatchOp">BatchOp</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>request</td><td><code><a href="Table.html#Struct_Request">Request</a></code></td><td></td><td>required</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Result">Union: Result</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>getResult</td><td><code><a href="Table.html#Struct_GetResult">GetResult</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>putResult</td><td><code><a href="Table.html#Struct_PutResult">PutResult</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>incrementResult</td><td><code><a href="Table.html#Struct_IncrementResult">IncrementResult</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>removeResult</td><td><code><a href="Table.html#Struct_RemoveResult">RemoveResult</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_BatchResultItem">Struct: BatchResultItem</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>action</td><td><code><a href="Table.html#Enum_BatchOp">BatchOp</a></code></td><td>操作类型
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>success</td><td><code>bool</code></td><td>是否成功执行，即无异常
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>result</td><td><code><a href="Table.html#Struct_Result">Result</a></code></td><td>操作结果，操作成功时被设置
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>serviceException</td><td><code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code></td><td>操作时发生的异常，操作失败时被设置
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_BatchRequest">Struct: BatchRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>items</td><td><code>list&lt;<code><a href="Table.html#Struct_BatchRequestItem">BatchRequestItem</a></code>&gt;</code></td><td></td><td>required</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_BatchResult">Struct: BatchResult</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>items</td><td><code>list&lt;<code><a href="Table.html#Struct_BatchResultItem">BatchResultItem</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><hr/><h2 id="Services">Services</h2>
+<h3 id="Svc_TableService">Service: TableService</h3>
+<div class="extends"><em>extends</em> <code><a href="Common.html#Svc_BaseService">Common.BaseService</a></code></div>
+结构化存储表数据访问接口
+<br/><div class="definition"><h4 id="Fn_TableService_get">Function: TableService.get</h4>
+<pre><code><a href="Table.html#Struct_GetResult">GetResult</a></code> get(<code><a href="Table.html#Struct_GetRequest">GetRequest</a></code> request)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>读操作，需要1个读配额
+<br/></div><div class="definition"><h4 id="Fn_TableService_put">Function: TableService.put</h4>
+<pre><code><a href="Table.html#Struct_PutResult">PutResult</a></code> put(<code><a href="Table.html#Struct_PutRequest">PutRequest</a></code> request)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>写操作，需要1个写配额，另外每个Eager二级索引需要1个额外读配额
+<br/></div><div class="definition"><h4 id="Fn_TableService_increment">Function: TableService.increment</h4>
+<pre><code><a href="Table.html#Struct_IncrementResult">IncrementResult</a></code> increment(<code><a href="Table.html#Struct_IncrementRequest">IncrementRequest</a></code> request)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>自增操作，需要读写配额各1
+<br/></div><div class="definition"><h4 id="Fn_TableService_remove">Function: TableService.remove</h4>
+<pre><code><a href="Table.html#Struct_RemoveResult">RemoveResult</a></code> remove(<code><a href="Table.html#Struct_RemoveRequest">RemoveRequest</a></code> request)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>删除操作，需要1个写配额，另外每个Eager二级索引需要1个额外读配额
+<br/></div><div class="definition"><h4 id="Fn_TableService_scan">Function: TableService.scan</h4>
+<pre><code><a href="Table.html#Struct_ScanResult">ScanResult</a></code> scan(<code><a href="Table.html#Struct_ScanRequest">ScanRequest</a></code> request)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>扫描操作，每个扫描过的记录消耗1个读配额(即使不满足过滤条件)，每个Lazy二级索引需要1个额外读配额
+<br/></div><div class="definition"><h4 id="Fn_TableService_batch">Function: TableService.batch</h4>
+<pre><code><a href="Table.html#Struct_BatchResult">BatchResult</a></code> batch(<code><a href="Table.html#Struct_BatchRequest">BatchRequest</a></code> request)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>批量读写操作，消耗各自对应的读写配额。同一个batch中多个操作修改同一行数据可能导致未定义行为（数据不一致），
+应当避免，另外如果一个batch包含同一行的读和写操作，其执行顺序是不确定的，不推荐使用
+<br/></div></div></body></html>

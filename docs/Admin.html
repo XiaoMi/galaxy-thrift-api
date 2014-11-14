@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: Admin</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: Admin</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>Admin</td><td><a href="#Svc_AdminService">AdminService</a><br/>
+<ul>
+<li><a href="#Fn_AdminService_alterTable">alterTable</a></li>
+<li><a href="#Fn_AdminService_cloneTable">cloneTable</a></li>
+<li><a href="#Fn_AdminService_createTable">createTable</a></li>
+<li><a href="#Fn_AdminService_describeTable">describeTable</a></li>
+<li><a href="#Fn_AdminService_disableTable">disableTable</a></li>
+<li><a href="#Fn_AdminService_dropTable">dropTable</a></li>
+<li><a href="#Fn_AdminService_enableTable">enableTable</a></li>
+<li><a href="#Fn_AdminService_findAllApps">findAllApps</a></li>
+<li><a href="#Fn_AdminService_findAllTables">findAllTables</a></li>
+<li><a href="#Fn_AdminService_getAppInfo">getAppInfo</a></li>
+<li><a href="#Fn_AdminService_getTableSplits">getTableSplits</a></li>
+<li><a href="#Fn_AdminService_getTableState">getTableState</a></li>
+<li><a href="#Fn_AdminService_getTableStatus">getTableStatus</a></li>
+<li><a href="#Fn_AdminService_lazyDropTable">lazyDropTable</a></li>
+<li><a href="#Fn_AdminService_queryMetric">queryMetric</a></li>
+<li><a href="#Fn_AdminService_queryMetrics">queryMetrics</a></li>
+<li><a href="#Fn_AdminService_saveAppInfo">saveAppInfo</a></li>
+</ul>
+</td>
+<td><a href="#Struct_AppInfo">AppInfo</a><br/>
+<a href="#Enum_MetricKey">MetricKey</a><br/>
+<a href="#Struct_MetricQueryRequest">MetricQueryRequest</a><br/>
+<a href="#Enum_MetricType">MetricType</a><br/>
+<a href="#Struct_TimeSeriesData">TimeSeriesData</a><br/>
+<a href="#Enum_TimeSpanUnit">TimeSpanUnit</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_MetricKey">Enumeration: MetricKey</h3>
+系统统计指标类型
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>METER_METRIC_MIN</code></td><td><code>0</code></td><td>
+速率类型统计指标起始
+<br/></td></tr>
+<tr><td><code>READ_ALLOWED</code></td><td><code>1</code></td><td>
+限流检查通过的读操作
+<br/></td></tr>
+<tr><td><code>READ_THROTTLED</code></td><td><code>2</code></td><td>
+限流检查拒绝的读操作
+<br/></td></tr>
+<tr><td><code>WRITE_ALLOWED</code></td><td><code>3</code></td><td>
+限流检查通过的写操作
+<br/></td></tr>
+<tr><td><code>WRITE_THROTTLED</code></td><td><code>4</code></td><td>
+限流检查拒绝的写操作
+<br/></td></tr>
+<tr><td><code>ACTION_SUCCESS</code></td><td><code>5</code></td><td>
+成功调用
+<br/></td></tr>
+<tr><td><code>ACTION_CLIENT_ERROR</code></td><td><code>6</code></td><td>
+客户端错误导致的失败调用
+<br/></td></tr>
+<tr><td><code>ACTION_SYSTEM_ERROR</code></td><td><code>7</code></td><td>
+系统错误导致的失败调用
+<br/></td></tr>
+<tr><td><code>METER_METRIC_MAX</code></td><td><code>49</code></td><td>
+速率类型统计指标结束
+<br/></td></tr>
+<tr><td><code>HISTOGRAM_METRIC_MIN</code></td><td><code>50</code></td><td>
+直方图类型统计指标起始
+<br/></td></tr>
+<tr><td><code>CREATE_LATENCY</code></td><td><code>51</code></td><td>
+CreateTable 调用延迟
+<br/></td></tr>
+<tr><td><code>DROP_LATENCY</code></td><td><code>52</code></td><td>
+DropTable 调用延迟
+<br/></td></tr>
+<tr><td><code>DESCRIBE_LATENCY</code></td><td><code>53</code></td><td>
+DescribeTable 调用延迟
+<br/></td></tr>
+<tr><td><code>ALTER_LATENCY</code></td><td><code>54</code></td><td>
+AlterTable 调用延迟
+<br/></td></tr>
+<tr><td><code>ENABLE_LATENCY</code></td><td><code>55</code></td><td>
+EnableTable 调用延迟
+<br/></td></tr>
+<tr><td><code>DISABLE_LATENCY</code></td><td><code>56</code></td><td>
+DisableTable 调用延迟
+<br/></td></tr>
+<tr><td><code>METRICQUERY_LATENCY</code></td><td><code>57</code></td><td>
+QueryMetrics 调用延迟
+<br/></td></tr>
+<tr><td><code>GET_LATENCY</code></td><td><code>58</code></td><td>
+Get 调用延迟
+<br/></td></tr>
+<tr><td><code>PUT_LATENCY</code></td><td><code>59</code></td><td>
+Put 调用延迟
+<br/></td></tr>
+<tr><td><code>INCREMENT_LATENCY</code></td><td><code>60</code></td><td>
+Increment 调用延迟
+<br/></td></tr>
+<tr><td><code>DELETE_LATENCY</code></td><td><code>61</code></td><td>
+Delete(Remove) 调用延迟
+<br/></td></tr>
+<tr><td><code>SCAN_LATENCY</code></td><td><code>62</code></td><td>
+Scan 调用延迟
+<br/></td></tr>
+<tr><td><code>BATCH_LATENCY</code></td><td><code>63</code></td><td>
+Batch 调用延迟
+<br/></td></tr>
+<tr><td><code>HISTOGRAM_METRIC_MAX</code></td><td><code>100</code></td><td>
+直方图类型统计指标结束
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_MetricType">Enumeration: MetricType</h3>
+统计指标的子类型
+(MetricKey, MetricType) 元组唯一确定一个统计指标
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>COUNT</code></td><td><code>1</code></td><td>
+计数器，支持速率类型和直方图类型的统计指标
+<br/></td></tr>
+<tr><td><code>M1_RATE</code></td><td><code>2</code></td><td>
+1分钟CPS(Count Per Second)均值，支持速率类型的统计指标
+<br/></td></tr>
+<tr><td><code>M5_RATE</code></td><td><code>3</code></td><td>
+5分钟CPS(Count Per Second)均值，支持速率类型的统计指标
+<br/></td></tr>
+<tr><td><code>M15_RATE</code></td><td><code>4</code></td><td>
+15分钟CPS(Count Per Second)均值，支持速率类型的统计指标
+<br/></td></tr>
+<tr><td><code>MEAN</code></td><td><code>5</code></td><td>
+均值，支持直方图类型的统计指标
+<br/></td></tr>
+<tr><td><code>STDDEV</code></td><td><code>6</code></td><td>
+标准差，支持直方图类型的统计指标
+<br/></td></tr>
+<tr><td><code>P50</code></td><td><code>7</code></td><td>
+中位数，支持直方图类型的统计指标
+<br/></td></tr>
+<tr><td><code>P75</code></td><td><code>8</code></td><td>
+75%百分位数，支持直方图类型的统计指标
+<br/></td></tr>
+<tr><td><code>P95</code></td><td><code>9</code></td><td>
+95%百分位数，支持直方图类型的统计指标
+<br/></td></tr>
+<tr><td><code>P98</code></td><td><code>10</code></td><td>
+98%百分位数，支持直方图类型的统计指标
+<br/></td></tr>
+<tr><td><code>P99</code></td><td><code>11</code></td><td>
+99%百分位数，支持直方图类型的统计指标
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_TimeSpanUnit">Enumeration: TimeSpanUnit</h3>
+时间间隔单位，用于查询统计指标时的下采样
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>SECONDS</code></td><td><code>1</code></td><td>
+</td></tr>
+<tr><td><code>MINUTES</code></td><td><code>2</code></td><td>
+</td></tr>
+<tr><td><code>HOURS</code></td><td><code>3</code></td><td>
+</td></tr>
+</table></div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_AppInfo">Struct: AppInfo</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>appId</td><td><code>string</code></td><td>小米应用ID
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>developerId</td><td><code>string</code></td><td>小米开发者ID (注意：不同于小米ID)
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>tableMappings</td><td><code>map&lt;<code>string</code>, <code>string</code>&gt;</code></td><td>表到表ID的映射
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>oauthAppMapping</td><td><code>map&lt;<code>string</code>, <code>string</code>&gt;</code></td><td>应用OAuth信息, OAuth提供方到第三方OAuth应用信息(如OAuth AppID)的映射
+</td><td>optional</td><td></td></tr>
+</table><br/>应用信息
+<br/></div><div class="definition"><h3 id="Struct_MetricQueryRequest">Struct: MetricQueryRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td>需要查询的表名
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>startTime</td><td><code>i64</code></td><td>起始时间，值为1970/0/0开始的秒数
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>stopTime</td><td><code>i64</code></td><td>结束时间，值为1970/0/0开始的秒数
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>metricKey</td><td><code><a href="Admin.html#Enum_MetricKey">MetricKey</a></code></td><td>统计指标主类型
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>metricType</td><td><code><a href="Admin.html#Enum_MetricType">MetricType</a></code></td><td>统计指标子类型
+</td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>downsampleInterval</td><td><code>i32</code></td><td>下采样时间间隔, 0或者负数表示读取原始数据不进行下采样
+</td><td>optional</td><td></td></tr>
+<tr><td>7</td><td>downsampleTimeUnit</td><td><code><a href="Admin.html#Enum_TimeSpanUnit">TimeSpanUnit</a></code></td><td>下采样时间间隔单位
+</td><td>optional</td><td></td></tr>
+</table><br/>统计指标查询请求
+<br/></div><div class="definition"><h3 id="Struct_TimeSeriesData">Struct: TimeSeriesData</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td>表名
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>metricKey</td><td><code><a href="Admin.html#Enum_MetricKey">MetricKey</a></code></td><td>统计指标主类型
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>metricType</td><td><code><a href="Admin.html#Enum_MetricType">MetricType</a></code></td><td>统计指标子类型
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>data</td><td><code>map&lt;<code>i64</code>, <code>double</code>&gt;</code></td><td>统计指标数据时间序列，值为{时间 =&gt; 数值}映射
+</td><td>optional</td><td></td></tr>
+</table><br/>统计指标时间序列
+<br/></div><hr/><h2 id="Services">Services</h2>
+<h3 id="Svc_AdminService">Service: AdminService</h3>
+<div class="extends"><em>extends</em> <code><a href="Common.html#Svc_BaseService">Common.BaseService</a></code></div>
+结构化存储管理接口
+<br/><div class="definition"><h4 id="Fn_AdminService_saveAppInfo">Function: AdminService.saveAppInfo</h4>
+<pre><code>void</code> saveAppInfo(<code><a href="Admin.html#Struct_AppInfo">AppInfo</a></code> appInfo)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>保存应用信息，用于注册第三方应用OAuth信息
+<br/></div><div class="definition"><h4 id="Fn_AdminService_getAppInfo">Function: AdminService.getAppInfo</h4>
+<pre><code><a href="Admin.html#Struct_AppInfo">AppInfo</a></code> getAppInfo(<code>string</code> appId)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>查询应用信息
+<br/></div><div class="definition"><h4 id="Fn_AdminService_findAllApps">Function: AdminService.findAllApps</h4>
+<pre><code>list&lt;<code><a href="Admin.html#Struct_AppInfo">AppInfo</a></code>&gt;</code> findAllApps()
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>查询指定用户所有应用信息
+<br/></div><div class="definition"><h4 id="Fn_AdminService_findAllTables">Function: AdminService.findAllTables</h4>
+<pre><code>list&lt;<code><a href="Table.html#Struct_TableInfo">Table.TableInfo</a></code>&gt;</code> findAllTables()
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>获取指定用户所有表信息
+<br/></div><div class="definition"><h4 id="Fn_AdminService_createTable">Function: AdminService.createTable</h4>
+<pre><code><a href="Table.html#Struct_TableInfo">Table.TableInfo</a></code> createTable(<code>string</code> tableName,
+                            <code><a href="Table.html#Struct_TableSpec">Table.TableSpec</a></code> tableSpec)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>创建表
+<br/></div><div class="definition"><h4 id="Fn_AdminService_dropTable">Function: AdminService.dropTable</h4>
+<pre><code>void</code> dropTable(<code>string</code> tableName)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>删除表
+<br/></div><div class="definition"><h4 id="Fn_AdminService_lazyDropTable">Function: AdminService.lazyDropTable</h4>
+<pre><code>void</code> lazyDropTable(<code>string</code> tableName)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>延迟删除表
+<br/></div><div class="definition"><h4 id="Fn_AdminService_alterTable">Function: AdminService.alterTable</h4>
+<pre><code>void</code> alterTable(<code>string</code> tableName,
+                <code><a href="Table.html#Struct_TableSpec">Table.TableSpec</a></code> tableSpec)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>修改表
+<br/></div><div class="definition"><h4 id="Fn_AdminService_cloneTable">Function: AdminService.cloneTable</h4>
+<pre><code>void</code> cloneTable(<code>string</code> srcName,
+                <code>string</code> destTable,
+                <code>bool</code> flushTable)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>克隆表
+<br/></div><div class="definition"><h4 id="Fn_AdminService_disableTable">Function: AdminService.disableTable</h4>
+<pre><code>void</code> disableTable(<code>string</code> tableName)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>关闭表读写操作
+<br/></div><div class="definition"><h4 id="Fn_AdminService_enableTable">Function: AdminService.enableTable</h4>
+<pre><code>void</code> enableTable(<code>string</code> tableName)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>打开表读写操作
+<br/></div><div class="definition"><h4 id="Fn_AdminService_describeTable">Function: AdminService.describeTable</h4>
+<pre><code><a href="Table.html#Struct_TableSpec">Table.TableSpec</a></code> describeTable(<code>string</code> tableName)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>获取表定义
+<br/></div><div class="definition"><h4 id="Fn_AdminService_getTableStatus">Function: AdminService.getTableStatus</h4>
+<pre><code><a href="Table.html#Struct_TableStatus">Table.TableStatus</a></code> getTableStatus(<code>string</code> tableName)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>获取表状态等元信息
+<br/></div><div class="definition"><h4 id="Fn_AdminService_getTableState">Function: AdminService.getTableState</h4>
+<pre><code><a href="Table.html#Enum_TableState">Table.TableState</a></code> getTableState(<code>string</code> tableName)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>获取表状态
+<br/></div><div class="definition"><h4 id="Fn_AdminService_getTableSplits">Function: AdminService.getTableSplits</h4>
+<pre><code>list&lt;<code><a href="Table.html#Struct_TableSplit">Table.TableSplit</a></code>&gt;</code> getTableSplits(<code>string</code> tableName,
+                                      <code><a href="Table.html#Typedef_Dictionary">Table.Dictionary</a></code> startKey,
+                                      <code><a href="Table.html#Typedef_Dictionary">Table.Dictionary</a></code> stopKey)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>获取表分布信息，如用于MapReduce应用
+<br/></div><div class="definition"><h4 id="Fn_AdminService_queryMetric">Function: AdminService.queryMetric</h4>
+<pre><code><a href="Admin.html#Struct_TimeSeriesData">TimeSeriesData</a></code> queryMetric(<code><a href="Admin.html#Struct_MetricQueryRequest">MetricQueryRequest</a></code> query)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>查询表统计指标
+<br/></div><div class="definition"><h4 id="Fn_AdminService_queryMetrics">Function: AdminService.queryMetrics</h4>
+<pre><code>list&lt;<code><a href="Admin.html#Struct_TimeSeriesData">TimeSeriesData</a></code>&gt;</code> queryMetrics(<code>list&lt;<code><a href="Admin.html#Struct_MetricQueryRequest">MetricQueryRequest</a></code>&gt;</code> queries)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>批量查询表统计指标
+<br/></div></div></body></html>
