@@ -133,7 +133,6 @@ struct Datum {
   2: required Value value;
 }
 
-
 /**
  * 操作符类型
  */

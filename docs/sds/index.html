@@ -1,0 +1,140 @@
+<html><head>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>All Thrift declarations</title></head><body>
+<div class="container-fluid">
+<h1>All Thrift declarations</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>Admin</td><td><a href="Admin.html#Svc_AdminService">AdminService</a><br/>
+<ul>
+<li><a href="Admin.html#Fn_AdminService_alterTable">alterTable</a></li>
+<li><a href="Admin.html#Fn_AdminService_cloneTable">cloneTable</a></li>
+<li><a href="Admin.html#Fn_AdminService_createTable">createTable</a></li>
+<li><a href="Admin.html#Fn_AdminService_describeTable">describeTable</a></li>
+<li><a href="Admin.html#Fn_AdminService_disableTable">disableTable</a></li>
+<li><a href="Admin.html#Fn_AdminService_dropTable">dropTable</a></li>
+<li><a href="Admin.html#Fn_AdminService_enableTable">enableTable</a></li>
+<li><a href="Admin.html#Fn_AdminService_findAllApps">findAllApps</a></li>
+<li><a href="Admin.html#Fn_AdminService_findAllTables">findAllTables</a></li>
+<li><a href="Admin.html#Fn_AdminService_getAppInfo">getAppInfo</a></li>
+<li><a href="Admin.html#Fn_AdminService_getTableSplits">getTableSplits</a></li>
+<li><a href="Admin.html#Fn_AdminService_getTableState">getTableState</a></li>
+<li><a href="Admin.html#Fn_AdminService_getTableStatus">getTableStatus</a></li>
+<li><a href="Admin.html#Fn_AdminService_lazyDropTable">lazyDropTable</a></li>
+<li><a href="Admin.html#Fn_AdminService_queryMetric">queryMetric</a></li>
+<li><a href="Admin.html#Fn_AdminService_queryMetrics">queryMetrics</a></li>
+<li><a href="Admin.html#Fn_AdminService_saveAppInfo">saveAppInfo</a></li>
+</ul>
+</td>
+<td><a href="Admin.html#Struct_AppInfo">AppInfo</a><br/>
+<a href="Admin.html#Enum_MetricKey">MetricKey</a><br/>
+<a href="Admin.html#Struct_MetricQueryRequest">MetricQueryRequest</a><br/>
+<a href="Admin.html#Enum_MetricType">MetricType</a><br/>
+<a href="Admin.html#Struct_TimeSeriesData">TimeSeriesData</a><br/>
+<a href="Admin.html#Enum_TimeSpanUnit">TimeSpanUnit</a><br/>
+</td>
+<td></code></td>
+</tr><tr>
+<td>Errors</td><td></td>
+<td><a href="Errors.html#Enum_ErrorCode">ErrorCode</a><br/>
+<a href="Errors.html#Enum_HttpStatusCode">HttpStatusCode</a><br/>
+<a href="Errors.html#Struct_ServiceException">ServiceException</a><br/>
+</td>
+<td><code><a href="Errors.html#Const_ERROR_AUTO_BACKOFF">ERROR_AUTO_BACKOFF</a></code><br/>
+<code><a href="Errors.html#Const_MAX_RETRY">MAX_RETRY</a></code><br/>
+</code></td>
+</tr><tr>
+<td>Common</td><td><a href="Common.html#Svc_BaseService">BaseService</a><br/>
+<ul>
+<li><a href="Common.html#Fn_BaseService_getServerTime">getServerTime</a></li>
+<li><a href="Common.html#Fn_BaseService_getServerVersion">getServerVersion</a></li>
+<li><a href="Common.html#Fn_BaseService_validateClientVersion">validateClientVersion</a></li>
+</ul>
+</td>
+<td><a href="Common.html#Struct_Version">Version</a><br/>
+</td>
+<td><code><a href="Common.html#Const_ADMIN_SERVICE_PATH">ADMIN_SERVICE_PATH</a></code><br/>
+<code><a href="Common.html#Const_API_ROOT_PATH">API_ROOT_PATH</a></code><br/>
+<code><a href="Common.html#Const_AUTH_SERVICE_PATH">AUTH_SERVICE_PATH</a></code><br/>
+<code><a href="Common.html#Const_DEFAULT_ADMIN_CLIENT_TIMEOUT">DEFAULT_ADMIN_CLIENT_TIMEOUT</a></code><br/>
+<code><a href="Common.html#Const_DEFAULT_CLIENT_CONN_TIMEOUT">DEFAULT_CLIENT_CONN_TIMEOUT</a></code><br/>
+<code><a href="Common.html#Const_DEFAULT_CLIENT_TIMEOUT">DEFAULT_CLIENT_TIMEOUT</a></code><br/>
+<code><a href="Common.html#Const_DEFAULT_SECURE_SERVICE_ENDPOINT">DEFAULT_SECURE_SERVICE_ENDPOINT</a></code><br/>
+<code><a href="Common.html#Const_DEFAULT_SERVICE_ENDPOINT">DEFAULT_SERVICE_ENDPOINT</a></code><br/>
+<code><a href="Common.html#Const_TABLE_SERVICE_PATH">TABLE_SERVICE_PATH</a></code><br/>
+</code></td>
+</tr><tr>
+<td>Authentication</td><td><a href="Authentication.html#Svc_AuthService">AuthService</a><br/>
+<ul>
+<li><a href="Authentication.html#Fn_AuthService_createCredential">createCredential</a></li>
+</ul>
+</td>
+<td><a href="Authentication.html#Enum_AppUserAuthProvider">AppUserAuthProvider</a><br/>
+<a href="Authentication.html#Struct_Credential">Credential</a><br/>
+<a href="Authentication.html#Struct_HttpAuthorizationHeader">HttpAuthorizationHeader</a><br/>
+<a href="Authentication.html#Enum_MacAlgorithm">MacAlgorithm</a><br/>
+<a href="Authentication.html#Enum_UserType">UserType</a><br/>
+</td>
+<td><code><a href="Authentication.html#Const_HK_AUTHORIZATION">HK_AUTHORIZATION</a></code><br/>
+<code><a href="Authentication.html#Const_HK_CONTENT_MD5">HK_CONTENT_MD5</a></code><br/>
+<code><a href="Authentication.html#Const_HK_HOST">HK_HOST</a></code><br/>
+<code><a href="Authentication.html#Const_HK_TIMESTAMP">HK_TIMESTAMP</a></code><br/>
+<code><a href="Authentication.html#Const_MAX_CONTENT_SIZE">MAX_CONTENT_SIZE</a></code><br/>
+<code><a href="Authentication.html#Const_SIGNATURE_SUPPORT">SIGNATURE_SUPPORT</a></code><br/>
+<code><a href="Authentication.html#Const_SUGGESTED_SIGNATURE_HEADERS">SUGGESTED_SIGNATURE_HEADERS</a></code><br/>
+</code></td>
+</tr><tr>
+<td>Table</td><td><a href="Table.html#Svc_TableService">TableService</a><br/>
+<ul>
+<li><a href="Table.html#Fn_TableService_batch">batch</a></li>
+<li><a href="Table.html#Fn_TableService_get">get</a></li>
+<li><a href="Table.html#Fn_TableService_increment">increment</a></li>
+<li><a href="Table.html#Fn_TableService_put">put</a></li>
+<li><a href="Table.html#Fn_TableService_remove">remove</a></li>
+<li><a href="Table.html#Fn_TableService_scan">scan</a></li>
+</ul>
+</td>
+<td><a href="Table.html#Typedef_AclConf">AclConf</a><br/>
+<a href="Table.html#Typedef_Attributes">Attributes</a><br/>
+<a href="Table.html#Enum_BatchOp">BatchOp</a><br/>
+<a href="Table.html#Struct_BatchRequest">BatchRequest</a><br/>
+<a href="Table.html#Struct_BatchRequestItem">BatchRequestItem</a><br/>
+<a href="Table.html#Struct_BatchResult">BatchResult</a><br/>
+<a href="Table.html#Struct_BatchResultItem">BatchResultItem</a><br/>
+<a href="Table.html#Enum_CannedAcl">CannedAcl</a><br/>
+<a href="Table.html#Enum_DataType">DataType</a><br/>
+<a href="Table.html#Struct_Datum">Datum</a><br/>
+<a href="Table.html#Typedef_Dictionary">Dictionary</a><br/>
+<a href="Table.html#Struct_EntityGroupSpec">EntityGroupSpec</a><br/>
+<a href="Table.html#Struct_GetRequest">GetRequest</a><br/>
+<a href="Table.html#Struct_GetResult">GetResult</a><br/>
+<a href="Table.html#Struct_IncrementRequest">IncrementRequest</a><br/>
+<a href="Table.html#Struct_IncrementResult">IncrementResult</a><br/>
+<a href="Table.html#Typedef_IndexSpec">IndexSpec</a><br/>
+<a href="Table.html#Struct_KeySpec">KeySpec</a><br/>
+<a href="Table.html#Struct_LocalSecondaryIndexSpec">LocalSecondaryIndexSpec</a><br/>
+<a href="Table.html#Enum_OperatorType">OperatorType</a><br/>
+<a href="Table.html#Struct_ProvisionThroughput">ProvisionThroughput</a><br/>
+<a href="Table.html#Struct_PutRequest">PutRequest</a><br/>
+<a href="Table.html#Struct_PutResult">PutResult</a><br/>
+<a href="Table.html#Struct_RemoveRequest">RemoveRequest</a><br/>
+<a href="Table.html#Struct_RemoveResult">RemoveResult</a><br/>
+<a href="Table.html#Struct_Request">Request</a><br/>
+<a href="Table.html#Struct_Result">Result</a><br/>
+<a href="Table.html#Struct_ScanRequest">ScanRequest</a><br/>
+<a href="Table.html#Struct_ScanResult">ScanResult</a><br/>
+<a href="Table.html#Enum_SecondaryIndexConsistencyMode">SecondaryIndexConsistencyMode</a><br/>
+<a href="Table.html#Struct_SimpleCondition">SimpleCondition</a><br/>
+<a href="Table.html#Struct_TableInfo">TableInfo</a><br/>
+<a href="Table.html#Struct_TableMetadata">TableMetadata</a><br/>
+<a href="Table.html#Struct_TableQuota">TableQuota</a><br/>
+<a href="Table.html#Struct_TableSchema">TableSchema</a><br/>
+<a href="Table.html#Struct_TableSpec">TableSpec</a><br/>
+<a href="Table.html#Struct_TableSplit">TableSplit</a><br/>
+<a href="Table.html#Enum_TableState">TableState</a><br/>
+<a href="Table.html#Struct_TableStatus">TableStatus</a><br/>
+<a href="Table.html#Struct_Value">Value</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+</div></body></html>

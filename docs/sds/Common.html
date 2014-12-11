@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: Common</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: Common</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>Common</td><td><a href="#Svc_BaseService">BaseService</a><br/>
+<ul>
+<li><a href="#Fn_BaseService_getServerTime">getServerTime</a></li>
+<li><a href="#Fn_BaseService_getServerVersion">getServerVersion</a></li>
+<li><a href="#Fn_BaseService_validateClientVersion">validateClientVersion</a></li>
+</ul>
+</td>
+<td><a href="#Struct_Version">Version</a><br/>
+</td>
+<td><code><a href="#Const_ADMIN_SERVICE_PATH">ADMIN_SERVICE_PATH</a></code><br/>
+<code><a href="#Const_API_ROOT_PATH">API_ROOT_PATH</a></code><br/>
+<code><a href="#Const_AUTH_SERVICE_PATH">AUTH_SERVICE_PATH</a></code><br/>
+<code><a href="#Const_DEFAULT_ADMIN_CLIENT_TIMEOUT">DEFAULT_ADMIN_CLIENT_TIMEOUT</a></code><br/>
+<code><a href="#Const_DEFAULT_CLIENT_CONN_TIMEOUT">DEFAULT_CLIENT_CONN_TIMEOUT</a></code><br/>
+<code><a href="#Const_DEFAULT_CLIENT_TIMEOUT">DEFAULT_CLIENT_TIMEOUT</a></code><br/>
+<code><a href="#Const_DEFAULT_SECURE_SERVICE_ENDPOINT">DEFAULT_SECURE_SERVICE_ENDPOINT</a></code><br/>
+<code><a href="#Const_DEFAULT_SERVICE_ENDPOINT">DEFAULT_SERVICE_ENDPOINT</a></code><br/>
+<code><a href="#Const_TABLE_SERVICE_PATH">TABLE_SERVICE_PATH</a></code><br/>
+</code></td>
+</tr></table>
+<hr/><h2 id="Constants">Constants</h2>
+<table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
+<tr id="Const_DEFAULT_CLIENT_TIMEOUT"><td><code>DEFAULT_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>10</code></td></tr><tr><td colspan="3"><blockquote>client端读写超时时间（s）
+<br/></blockquote></td></tr><tr id="Const_DEFAULT_ADMIN_CLIENT_TIMEOUT"><td><code>DEFAULT_ADMIN_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>30</code></td></tr><tr><td colspan="3"><blockquote>client端DDL操作超时时间（s）
+<br/></blockquote></td></tr><tr id="Const_DEFAULT_CLIENT_CONN_TIMEOUT"><td><code>DEFAULT_CLIENT_CONN_TIMEOUT</code></td><td><code>double</code></td><td><code>3</code></td></tr><tr><td colspan="3"><blockquote>client端连接超时时间（s）
+<br/></blockquote></td></tr><tr id="Const_DEFAULT_SERVICE_ENDPOINT"><td><code>DEFAULT_SERVICE_ENDPOINT</code></td><td><code>string</code></td><td><code>"http://sds.api.xiaomi.com"</code></td></tr><tr><td colspan="3"><blockquote>HTTP RPC服务地址
+<br/></blockquote></td></tr><tr id="Const_DEFAULT_SECURE_SERVICE_ENDPOINT"><td><code>DEFAULT_SECURE_SERVICE_ENDPOINT</code></td><td><code>string</code></td><td><code>"https://sds.api.xiaomi.com"</code></td></tr><tr><td colspan="3"><blockquote>HTTPS RPC服务地址
+<br/></blockquote></td></tr><tr id="Const_API_ROOT_PATH"><td><code>API_ROOT_PATH</code></td><td><code>string</code></td><td><code>"/v1/api"</code></td></tr><tr><td colspan="3"><blockquote>RPC根路径
+<br/></blockquote></td></tr><tr id="Const_AUTH_SERVICE_PATH"><td><code>AUTH_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/auth"</code></td></tr><tr><td colspan="3"><blockquote>权限RPC路径
+<br/></blockquote></td></tr><tr id="Const_ADMIN_SERVICE_PATH"><td><code>ADMIN_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/admin"</code></td></tr><tr><td colspan="3"><blockquote>管理操作RPC路径
+<br/></blockquote></td></tr><tr id="Const_TABLE_SERVICE_PATH"><td><code>TABLE_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/table"</code></td></tr><tr><td colspan="3"><blockquote>表数据访问RPC路径
+<br/></blockquote></td></tr></table><hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_Version">Struct: Version</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>major</td><td><code>i32</code></td><td>主版本号，不同版本号之间不兼容
+</td><td>required</td><td><code>1</code></td></tr>
+<tr><td>2</td><td>minor</td><td><code>i32</code></td><td>次版本号，不同版本号之间向后兼容
+</td><td>required</td><td><code>0</code></td></tr>
+<tr><td>3</td><td>patch</td><td><code>string</code></td><td>构建版本号，不同版本之间互相兼容
+</td><td>optional</td><td><code>"d0bc1b06"</code></td></tr>
+<tr><td>4</td><td>comments</td><td><code>string</code></td><td>附加信息
+</td><td>optional</td><td><code>""</code></td></tr>
+</table><br/>版本号，规则详见http://semver.org
+<br/></div><hr/><h2 id="Services">Services</h2>
+<h3 id="Svc_BaseService">Service: BaseService</h3>
+结构化存储基础接口
+<br/><div class="definition"><h4 id="Fn_BaseService_getServerVersion">Function: BaseService.getServerVersion</h4>
+<pre><code><a href="Common.html#Struct_Version">Version</a></code> getServerVersion()
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>获取服务端版本
+<br/></div><div class="definition"><h4 id="Fn_BaseService_validateClientVersion">Function: BaseService.validateClientVersion</h4>
+<pre><code>void</code> validateClientVersion(<code><a href="Common.html#Struct_Version">Version</a></code> clientVersion)
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>检查版本兼容性
+<br/></div><div class="definition"><h4 id="Fn_BaseService_getServerTime">Function: BaseService.getServerTime</h4>
+<pre><code>i64</code> getServerTime()
+</pre>获取服务器端当前时间，1970/0/0开始的秒数，可用作ping检查联通性
+<br/></div></div></body></html>
