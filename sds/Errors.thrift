@@ -110,16 +110,50 @@ enum ErrorCode {
    * 无效请求
    */
   BAD_REQUEST = 34,
+  /**
+   * HTTP传输层错误
+   */
+  TTRANSPORT_ERROR = 35,
+}
+
+enum RetryType {
+  /**
+   * 安全重试，比如建立链接超时，时钟偏移太大等错误，可以安全的进行自动重试
+   */
+  SAFE = 0,
+  /**
+   * 非安全重试，比如操作超时，系统错误等，需要开发者显式指定，系统不应自动重试
+   */
+  UNSAFE = 1,
 }
 
 /**
  * SDK自动重试的错误码及回退(backoff)基准时间，
  * 等待时间 = 2 ^ 重试次数 * 回退基准时间
  */
-const map<ErrorCode, i32> ERROR_AUTO_BACKOFF = {
+const map<ErrorCode, i64> ERROR_BACKOFF = {
+  /**
+   * SAFE类型
+   */
   ErrorCode.SERVICE_UNAVAILABLE : 1000,
   ErrorCode.THROUGHPUT_EXCEED : 1000,
-  ErrorCode.CLOCK_TOO_SKEWED : 0
+  ErrorCode.CLOCK_TOO_SKEWED : 0,
+  /**
+   * UNSAFE类型
+   */
+  ErrorCode.INTERNAL_ERROR : 1000,
+  ErrorCode.TTRANSPORT_ERROR : 1000
+},
+
+/**
+ * 错误码所对应的重试类型
+ */
+const map<ErrorCode, RetryType> ERROR_RETRY_TYPE = {
+  ErrorCode.SERVICE_UNAVAILABLE : RetryType.SAFE,
+  ErrorCode.THROUGHPUT_EXCEED : RetryType.SAFE,
+  ErrorCode.CLOCK_TOO_SKEWED : RetryType.SAFE,
+  ErrorCode.INTERNAL_ERROR :  RetryType.UNSAFE,
+  ErrorCode.TTRANSPORT_ERROR : RetryType.UNSAFE
 },
 
 /**

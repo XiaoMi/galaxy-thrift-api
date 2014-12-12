@@ -6,17 +6,17 @@ namespace py sds.common
 namespace go sds.common
 
 /**
- * client端读写超时时间（s）
+ * client端读写超时时间（ms）
  */
-const double DEFAULT_CLIENT_TIMEOUT = 10
+const double DEFAULT_CLIENT_TIMEOUT = 10000
 /**
- * client端DDL操作超时时间（s）
+ * client端DDL操作超时时间（ms）
  */
-const double DEFAULT_ADMIN_CLIENT_TIMEOUT = 30
+const double DEFAULT_ADMIN_CLIENT_TIMEOUT = 30000
 /**
- * client端连接超时时间（s）
+ * client端连接超时时间（ms）
  */
-const double DEFAULT_CLIENT_CONN_TIMEOUT = 3
+const double DEFAULT_CLIENT_CONN_TIMEOUT = 3000
 /**
  * HTTP RPC服务地址
  */
@@ -57,7 +57,7 @@ struct Version {
   /**
    * 构建版本号，不同版本之间互相兼容
    */
-  3: optional string patch = 'a86c3fbd',
+  3: optional string patch = '972139ed',
   /**
    * 附加信息
    */

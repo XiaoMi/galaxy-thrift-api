@@ -12,16 +12,19 @@
 <td>Errors</td><td></td>
 <td><a href="#Enum_ErrorCode">ErrorCode</a><br/>
 <a href="#Enum_HttpStatusCode">HttpStatusCode</a><br/>
+<a href="#Enum_RetryType">RetryType</a><br/>
 <a href="#Struct_ServiceException">ServiceException</a><br/>
 </td>
-<td><code><a href="#Const_ERROR_AUTO_BACKOFF">ERROR_AUTO_BACKOFF</a></code><br/>
+<td><code><a href="#Const_ERROR_BACKOFF">ERROR_BACKOFF</a></code><br/>
+<code><a href="#Const_ERROR_RETRY_TYPE">ERROR_RETRY_TYPE</a></code><br/>
 <code><a href="#Const_MAX_RETRY">MAX_RETRY</a></code><br/>
 </code></td>
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_ERROR_AUTO_BACKOFF"><td><code>ERROR_AUTO_BACKOFF</code></td><td><code>map&lt;<code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code>, <code>i32</code>&gt;</code></td><td><code>{ <code><a href="#Const_ErrorCode.SERVICE_UNAVAILABLE">ErrorCode.SERVICE_UNAVAILABLE</a></code> = 1000, <code><a href="#Const_ErrorCode.THROUGHPUT_EXCEED">ErrorCode.THROUGHPUT_EXCEED</a></code> = 1000, <code><a href="#Const_ErrorCode.CLOCK_TOO_SKEWED">ErrorCode.CLOCK_TOO_SKEWED</a></code> = 0 }</code></td></tr><tr><td colspan="3"><blockquote>SDK自动重试的错误码及回退(backoff)基准时间，
+<tr id="Const_ERROR_BACKOFF"><td><code>ERROR_BACKOFF</code></td><td><code>map&lt;<code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code>, <code>i64</code>&gt;</code></td><td><code>{ UNKNOWN = 1000, UNKNOWN = 1000, UNKNOWN = 0, UNKNOWN = 1000, UNKNOWN = 1000 }</code></td></tr><tr><td colspan="3"><blockquote>SDK自动重试的错误码及回退(backoff)基准时间，
 等待时间 = 2 ^ 重试次数 * 回退基准时间
+<br/></blockquote></td></tr><tr id="Const_ERROR_RETRY_TYPE"><td><code>ERROR_RETRY_TYPE</code></td><td><code>map&lt;<code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code>, <code><a href="Errors.html#Enum_RetryType">RetryType</a></code>&gt;</code></td><td><code>{ UNKNOWN = UNKNOWN, UNKNOWN = UNKNOWN, UNKNOWN = UNKNOWN, UNKNOWN = UNKNOWN, UNKNOWN = UNKNOWN }</code></td></tr><tr><td colspan="3"><blockquote>错误码所对应的重试类型
 <br/></blockquote></td></tr><tr id="Const_MAX_RETRY"><td><code>MAX_RETRY</code></td><td><code>i32</code></td><td><code>1</code></td></tr><tr><td colspan="3"><blockquote>抛出异常之前最大重试次数
 <br/></blockquote></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
 <div class="definition"><h3 id="Enum_HttpStatusCode">Enumeration: HttpStatusCode</h3>
@@ -98,6 +101,18 @@ HTTP请求过大
 <br/></td></tr>
 <tr><td><code>BAD_REQUEST</code></td><td><code>34</code></td><td>
 无效请求
+<br/></td></tr>
+<tr><td><code>TTRANSPORT_ERROR</code></td><td><code>35</code></td><td>
+HTTP传输层错误
+<br/></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_RetryType">Enumeration: RetryType</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>SAFE</code></td><td><code>0</code></td><td>
+安全重试，比如建立链接超时，时钟偏移太大等错误，可以安全的进行自动重试
+<br/></td></tr>
+<tr><td><code>UNSAFE</code></td><td><code>1</code></td><td>
+非安全重试，比如操作超时，系统错误等，需要开发者显式指定，系统不应自动重试
 <br/></td></tr>
 </table></div>
 <hr/><h2 id="Structs">Data structures</h2>
