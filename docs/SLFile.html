@@ -10,7 +10,8 @@
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>SLFile</td><td></td>
-<td><a href="#Struct_DatumMapMeta">DatumMapMeta</a><br/>
+<td><a href="#Struct_DatumMap">DatumMap</a><br/>
+<a href="#Struct_DatumMapMeta">DatumMapMeta</a><br/>
 <a href="#Struct_DatumMapRecord">DatumMapRecord</a><br/>
 <a href="#Struct_RCBasicMeta">RCBasicMeta</a><br/>
 <a href="#Struct_RCBasicRowGroupHeader">RCBasicRowGroupHeader</a><br/>
@@ -34,7 +35,7 @@ Datum Map文件存储格式
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_DatumMapMeta">Struct: DatumMapMeta</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>keyIdMap</td><td><code>map&lt;<code>i16</code>, <code>string</code>&gt;</code></td><td>属性id -> 属性名映射
+<tr><td>1</td><td>keyIdMap</td><td><code>map&lt;<code>i16</code>, <code>string</code>&gt;</code></td><td>属性id -&gt; 属性名映射
 </td><td>optional</td><td></td></tr>
 </table><br/>DATUM_MAP文件格式元信息
 <br/></div><div class="definition"><h3 id="Struct_RCBasicMeta">Struct: RCBasicMeta</h3>
@@ -62,7 +63,7 @@ Datum Map文件存储格式
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>data</td><td><code>map&lt;<code>i16</code>, <code><a href="Table.html#Struct_Datum">Table.Datum</a></code>&gt;</code></td><td>数据部分
 </td><td>optional</td><td></td></tr>
-<tr><td>2</td><td>keyIdMap</td><td><code>map&lt;<code>i16</code>, <code>string</code>&gt;</code></td><td>属性id -> 属性名映射，
+<tr><td>2</td><td>keyIdMap</td><td><code>map&lt;<code>i16</code>, <code>string</code>&gt;</code></td><td>属性id -&gt; 属性名映射，
 只记录当前未知的属性，即如果文件头或者前面记录已经包含某属性，则此处不再包含，
 此特性仅用于支持在创建文件时表schema未知的情况
 </td><td>optional</td><td></td></tr>
@@ -72,4 +73,9 @@ Datum Map文件存储格式
 <tr><td>1</td><td>values</td><td><code>list&lt;<code><a href="Table.html#Struct_Value">Table.Value</a></code>&gt;</code></td><td>列组数据，仅当所有行对应的列无数据时才为空，而只有部分行对应的列无数据时，其对应值为NullValue
 </td><td>optional</td><td></td></tr>
 </table><br/>RC_BASIC的列组定义
+<br/></div><div class="definition"><h3 id="Struct_DatumMap">Struct: DatumMap</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>data</td><td><code><a href="Table.html#Typedef_Dictionary">Table.Dictionary</a></code></td><td>SDS记录行
+</td><td>optional</td><td></td></tr>
+</table><br/>Datum Map记录定义，用于序列化原生的SDS表记录(例如，MapReduce中的序列化)
 <br/></div></div></body></html>

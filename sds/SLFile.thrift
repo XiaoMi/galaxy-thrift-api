@@ -152,3 +152,13 @@ struct ValueList {
    */
   1: optional list<Table.Value> values;
 }
+
+/**
+ * Datum Map记录定义，用于序列化原生的SDS表记录(例如，MapReduce中的序列化)
+ */
+struct DatumMap {
+  /**
+   * SDS记录行
+   */
+  1: optional Table.Dictionary data,
+}

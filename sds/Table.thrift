@@ -466,8 +466,8 @@ typedef map<string, Datum> Dictionary
  * 表分片信息，包括起始和结束的row key
  */
 struct TableSplit {
-  1: optional map<string, Datum> startKey,
-  2: optional map<string, Datum> stopKey,
+  1: optional Dictionary startKey,
+  2: optional Dictionary stopKey,
 }
 
 struct GetRequest {
