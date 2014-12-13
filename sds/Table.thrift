@@ -364,6 +364,10 @@ struct TableMetadata {
    * 吞吐量配额
    */
   5: optional ProvisionThroughput throughput,
+  /**
+   * 表备注信息
+   */
+  6: optional string description,
 }
 
 /**
