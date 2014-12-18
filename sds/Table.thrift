@@ -167,8 +167,8 @@ enum OperatorType {
  * 吞吐量配额
  */
 struct ProvisionThroughput {
-  1: required i64 readQps,
-  2: required i64 writeQps,
+  1: optional i64 readCapacity,
+  2: optional i64 writeCapacity,
 }
 
 /**
@@ -178,7 +178,7 @@ struct TableQuota {
   /**
    * 空间配额，单位为字节
    */
-  1: required i64 size,
+  1: optional i64 size,
 }
 
 struct KeySpec {

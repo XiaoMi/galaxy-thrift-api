@@ -280,13 +280,13 @@ ACL设置，为appId到其配置的权限的映射
 </table><br/>数据单元
 <br/></div><div class="definition"><h3 id="Struct_ProvisionThroughput">Struct: ProvisionThroughput</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>readQps</td><td><code>i64</code></td><td></td><td>required</td><td></td></tr>
-<tr><td>2</td><td>writeQps</td><td><code>i64</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>readCapacity</td><td><code>i64</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>writeCapacity</td><td><code>i64</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>吞吐量配额
 <br/></div><div class="definition"><h3 id="Struct_TableQuota">Struct: TableQuota</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>size</td><td><code>i64</code></td><td>空间配额，单位为字节
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 </table><br/>空间配额
 <br/></div><div class="definition"><h3 id="Struct_KeySpec">Struct: KeySpec</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
