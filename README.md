@@ -175,7 +175,7 @@ $credential = new Credential(
   )
 );
 $clientFactory = new ClientFactory($credential, false, true); // verbose off
-$endpoint = "https://sds.api.xiaomi.com";
+$endpoint = "https://cnbj-s0.sds.api.xiaomi.com";
 $adminClient = $clientFactory->newAdminClient($endpoint .
   $GLOBALS['Common_CONSTANTS']['ADMIN_SERVICE_PATH'],
   $GLOBALS['Common_CONSTANTS']['DEFAULT_ADMIN_CLIENT_TIMEOUT'],
@@ -192,7 +192,7 @@ https方式访问。此外，还可以自定义底层socket的建立连接和读
 配置HttpClient是够为线程安全的，以及连接池的参数。
 
 ###5.3 建表###
-见表过程可以通过开发者站的页面操作完成，如果需要，可以通过代码方式创建：
+建表过程可以通过开发者站的页面操作完成，如果需要，可以通过代码方式创建：
 ```php
 $tableName = "php-note";
 // create table
@@ -431,7 +431,7 @@ $credential = new Credential(
   )
 );
 $clientFactory = new ClientFactory($credential, true, true);
-$endpoint = "https://sds.api.xiaomi.com";
+$endpoint = "https://sds.api.xiaomi.com"; // 请使用region.sds.api.xiaomi.com显式指定集群
 $adminClient = $clientFactory->newAdminClient($endpoint .
   Constant::get('ADMIN_SERVICE_PATH'), 5, 5);
 
@@ -584,21 +584,22 @@ enum HttpStatusCode {
 目前结构化存储根据用户需求，包含了不同配置的三个集群，同时提供HTTP/HTTPS两种接入方式：
 
 ###7.1 在线集群###
-  * **主集群** 
+  * **主集群**
     * *集群名* - cnbj-s0.sds.api.xiaomi.com
     * *集群配置* - 后端采用高性能固态硬盘设备，为用户持续提供高吞吐率、低延迟的存储服务
-    * *建议使用方式* - 适合随机读、对访问延迟要求敏感的应用
-    
-  * **备集群** 
-    * *集群名* - cnbj-s0h0.sds.api.xiaomi.com
+    * *建议使用方式* - 适合随机读、对访问延迟要求敏感，请求密度大(请求量/空间占用)的应用
+
+  * **备集群**
+    * *集群名* - cnbj-s0h1.sds.api.xiaomi.com(即将上线)
     * *集群配置* - 后端采用大容量磁盘设备，提供远程复制功能，为用户提供高可用和高可靠的存储服务
     * *建议使用方式* - 适合离线数据分析等数据**只读**的应用
-  
+
 ###7.2 离线集群###
-  * **集群名** - cnbj-h0.sds.api.xiaomi.com
-  * **集群配置** - 后端采用大容量磁盘设备，为用户提供高带宽、低成本的存储服务
-  * **建议使用方式** - 适合离线数据分析、批量顺序扫描、对延迟不敏感的应用
-  
+  * **主集群**
+    * *集群名* - cnbj-h1.sds.api.xiaomi.com(即将上线)
+    * *集群配置* - 后端采用大容量磁盘设备，为用户提供高带宽、低成本的存储服务
+    * *建议使用方式* - 适合离线数据分析、批量顺序扫描、对延迟不敏感，请求密度小的应用
+
 8. 附录
 ----------------
 
