@@ -168,7 +168,7 @@ exception ServiceException {
   /**
    * 错误码
    */
-  1: required ErrorCode errorCode,
+  1: optional ErrorCode errorCode,
   /**
    * 错误信息
    */
