@@ -114,6 +114,10 @@ enum ErrorCode {
    * HTTP传输层错误
    */
   TTRANSPORT_ERROR = 35,
+  /**
+   * 不支持的thrift协议类型
+   */
+  UNSUPPORTED_TPROTOCOL = 36,
 }
 
 enum RetryType {

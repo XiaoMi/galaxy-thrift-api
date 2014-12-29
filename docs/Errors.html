@@ -22,9 +22,9 @@
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_ERROR_BACKOFF"><td><code>ERROR_BACKOFF</code></td><td><code>map&lt;<code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code>, <code>i64</code>&gt;</code></td><td><code>{ <code><a href="#Const_ErrorCode.SERVICE_UNAVAILABLE">ErrorCode.SERVICE_UNAVAILABLE</a></code> = 1000, <code><a href="#Const_ErrorCode.THROUGHPUT_EXCEED">ErrorCode.THROUGHPUT_EXCEED</a></code> = 1000, <code><a href="#Const_ErrorCode.CLOCK_TOO_SKEWED">ErrorCode.CLOCK_TOO_SKEWED</a></code> = 0, <code><a href="#Const_ErrorCode.INTERNAL_ERROR">ErrorCode.INTERNAL_ERROR</a></code> = 1000, <code><a href="#Const_ErrorCode.TTRANSPORT_ERROR">ErrorCode.TTRANSPORT_ERROR</a></code> = 1000 }</code></td></tr><tr><td colspan="3"><blockquote>SDK自动重试的错误码及回退(backoff)基准时间，
+<tr id="Const_ERROR_BACKOFF"><td><code>ERROR_BACKOFF</code></td><td><code>map&lt;<code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code>, <code>i64</code>&gt;</code></td><td><code>{ UNKNOWN = 1000, UNKNOWN = 1000, UNKNOWN = 0, UNKNOWN = 1000, UNKNOWN = 1000 }</code></td></tr><tr><td colspan="3"><blockquote>SDK自动重试的错误码及回退(backoff)基准时间，
 等待时间 = 2 ^ 重试次数 * 回退基准时间
-<br/></blockquote></td></tr><tr id="Const_ERROR_RETRY_TYPE"><td><code>ERROR_RETRY_TYPE</code></td><td><code>map&lt;<code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code>, <code><a href="Errors.html#Enum_RetryType">RetryType</a></code>&gt;</code></td><td><code>{ <code><a href="#Const_ErrorCode.SERVICE_UNAVAILABLE">ErrorCode.SERVICE_UNAVAILABLE</a></code> = <code><a href="#Const_RetryType.SAFE">RetryType.SAFE</a></code>, <code><a href="#Const_ErrorCode.THROUGHPUT_EXCEED">ErrorCode.THROUGHPUT_EXCEED</a></code> = <code><a href="#Const_RetryType.SAFE">RetryType.SAFE</a></code>, <code><a href="#Const_ErrorCode.CLOCK_TOO_SKEWED">ErrorCode.CLOCK_TOO_SKEWED</a></code> = <code><a href="#Const_RetryType.SAFE">RetryType.SAFE</a></code>, <code><a href="#Const_ErrorCode.INTERNAL_ERROR">ErrorCode.INTERNAL_ERROR</a></code> = <code><a href="#Const_RetryType.UNSAFE">RetryType.UNSAFE</a></code>, <code><a href="#Const_ErrorCode.TTRANSPORT_ERROR">ErrorCode.TTRANSPORT_ERROR</a></code> = <code><a href="#Const_RetryType.UNSAFE">RetryType.UNSAFE</a></code> }</code></td></tr><tr><td colspan="3"><blockquote>错误码所对应的重试类型
+<br/></blockquote></td></tr><tr id="Const_ERROR_RETRY_TYPE"><td><code>ERROR_RETRY_TYPE</code></td><td><code>map&lt;<code><a href="Errors.html#Enum_ErrorCode">ErrorCode</a></code>, <code><a href="Errors.html#Enum_RetryType">RetryType</a></code>&gt;</code></td><td><code>{ UNKNOWN = UNKNOWN, UNKNOWN = UNKNOWN, UNKNOWN = UNKNOWN, UNKNOWN = UNKNOWN, UNKNOWN = UNKNOWN }</code></td></tr><tr><td colspan="3"><blockquote>错误码所对应的重试类型
 <br/></blockquote></td></tr><tr id="Const_MAX_RETRY"><td><code>MAX_RETRY</code></td><td><code>i32</code></td><td><code>1</code></td></tr><tr><td colspan="3"><blockquote>抛出异常之前最大重试次数
 <br/></blockquote></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
 <div class="definition"><h3 id="Enum_HttpStatusCode">Enumeration: HttpStatusCode</h3>
@@ -104,6 +104,9 @@ HTTP请求过大
 <br/></td></tr>
 <tr><td><code>TTRANSPORT_ERROR</code></td><td><code>35</code></td><td>
 HTTP传输层错误
+<br/></td></tr>
+<tr><td><code>UNSUPPORTED_TPROTOCOL</code></td><td><code>36</code></td><td>
+不支持的thrift协议类型
 <br/></td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_RetryType">Enumeration: RetryType</h3>

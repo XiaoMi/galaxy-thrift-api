@@ -57,7 +57,7 @@ struct Version {
   /**
    * 构建版本号，不同版本之间互相兼容
    */
-  3: optional string patch = 'aba8f1a1',
+  3: optional string patch = '20bd2b7f',
   /**
    * 附加信息
    */
@@ -82,3 +82,42 @@ service BaseService {
   i64 getServerTime(),
 }
 
+/**
+ * thrift传输协议
+ */
+enum ThriftProtocol {
+  /**
+   * TCompactProtocl
+   */
+  TCOMPACT = 0,
+  /**
+   * TJSONProtocol
+   */
+  TJSON = 1,
+  /**
+   * TBINARYProtocol
+   */
+  TBINARY = 2,
+}
+
+
+/**
+ * 兼容其它SDK，等同于application/x-thrift-json
+ */
+const string DEFAULT_THRIFT_HEADER = 'application/x-thrift'
+const string THRIFT_JSON_HEADER = 'application/x-thrift-json'
+const string THRIFT_COMPACT_HEADER = 'application/x-thrift-compact'
+const string THRIFT_BINARY_HEADER = 'application/x-thrift-binary'
+
+const map<ThriftProtocol, string> THRIFT_HEADER_MAP = {
+  ThriftProtocol.TCOMPACT : THRIFT_COMPACT_HEADER,
+  ThriftProtocol.TJSON : THRIFT_JSON_HEADER,
+  ThriftProtocol.TBINARY : THRIFT_BINARY_HEADER
+},
+
+const map<string, ThriftProtocol> HEADER_THRIFT_MAP = {
+  THRIFT_COMPACT_HEADER : ThriftProtocol.TCOMPACT,
+  THRIFT_JSON_HEADER : ThriftProtocol.TJSON,
+  THRIFT_BINARY_HEADER : ThriftProtocol.TBINARY,
+  DEFAULT_THRIFT_HEADER : ThriftProtocol.TJSON
+},

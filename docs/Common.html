@@ -16,7 +16,8 @@
 <li><a href="#Fn_BaseService_validateClientVersion">validateClientVersion</a></li>
 </ul>
 </td>
-<td><a href="#Struct_Version">Version</a><br/>
+<td><a href="#Enum_ThriftProtocol">ThriftProtocol</a><br/>
+<a href="#Struct_Version">Version</a><br/>
 </td>
 <td><code><a href="#Const_ADMIN_SERVICE_PATH">ADMIN_SERVICE_PATH</a></code><br/>
 <code><a href="#Const_API_ROOT_PATH">API_ROOT_PATH</a></code><br/>
@@ -26,7 +27,13 @@
 <code><a href="#Const_DEFAULT_CLIENT_TIMEOUT">DEFAULT_CLIENT_TIMEOUT</a></code><br/>
 <code><a href="#Const_DEFAULT_SECURE_SERVICE_ENDPOINT">DEFAULT_SECURE_SERVICE_ENDPOINT</a></code><br/>
 <code><a href="#Const_DEFAULT_SERVICE_ENDPOINT">DEFAULT_SERVICE_ENDPOINT</a></code><br/>
+<code><a href="#Const_DEFAULT_THRIFT_HEADER">DEFAULT_THRIFT_HEADER</a></code><br/>
+<code><a href="#Const_HEADER_THRIFT_MAP">HEADER_THRIFT_MAP</a></code><br/>
 <code><a href="#Const_TABLE_SERVICE_PATH">TABLE_SERVICE_PATH</a></code><br/>
+<code><a href="#Const_THRIFT_BINARY_HEADER">THRIFT_BINARY_HEADER</a></code><br/>
+<code><a href="#Const_THRIFT_COMPACT_HEADER">THRIFT_COMPACT_HEADER</a></code><br/>
+<code><a href="#Const_THRIFT_HEADER_MAP">THRIFT_HEADER_MAP</a></code><br/>
+<code><a href="#Const_THRIFT_JSON_HEADER">THRIFT_JSON_HEADER</a></code><br/>
 </code></td>
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
@@ -40,17 +47,32 @@
 <br/></blockquote></td></tr><tr id="Const_AUTH_SERVICE_PATH"><td><code>AUTH_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/auth"</code></td></tr><tr><td colspan="3"><blockquote>权限RPC路径
 <br/></blockquote></td></tr><tr id="Const_ADMIN_SERVICE_PATH"><td><code>ADMIN_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/admin"</code></td></tr><tr><td colspan="3"><blockquote>管理操作RPC路径
 <br/></blockquote></td></tr><tr id="Const_TABLE_SERVICE_PATH"><td><code>TABLE_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/table"</code></td></tr><tr><td colspan="3"><blockquote>表数据访问RPC路径
-<br/></blockquote></td></tr></table><hr/><h2 id="Structs">Data structures</h2>
+<br/></blockquote></td></tr><tr id="Const_DEFAULT_THRIFT_HEADER"><td><code>DEFAULT_THRIFT_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift"</code></td></tr><tr><td colspan="3"><blockquote>兼容其它SDK，等同于application/x-thrift-json
+<br/></blockquote></td></tr><tr id="Const_THRIFT_JSON_HEADER"><td><code>THRIFT_JSON_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-json"</code></td></tr><tr id="Const_THRIFT_COMPACT_HEADER"><td><code>THRIFT_COMPACT_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-compact"</code></td></tr><tr id="Const_THRIFT_BINARY_HEADER"><td><code>THRIFT_BINARY_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-binary"</code></td></tr><tr id="Const_THRIFT_HEADER_MAP"><td><code>THRIFT_HEADER_MAP</code></td><td><code>map&lt;<code><a href="Common.html#Enum_ThriftProtocol">ThriftProtocol</a></code>, <code>string</code>&gt;</code></td><td><code>{ UNKNOWN = "application/x-thrift-compact", UNKNOWN = "application/x-thrift-json", UNKNOWN = "application/x-thrift-binary" }</code></td></tr><tr id="Const_HEADER_THRIFT_MAP"><td><code>HEADER_THRIFT_MAP</code></td><td><code>map&lt;<code>string</code>, <code><a href="Common.html#Enum_ThriftProtocol">ThriftProtocol</a></code>&gt;</code></td><td><code>{ "application/x-thrift-compact" = UNKNOWN, "application/x-thrift-json" = UNKNOWN, "application/x-thrift-binary" = UNKNOWN, "application/x-thrift" = UNKNOWN }</code></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_ThriftProtocol">Enumeration: ThriftProtocol</h3>
+thrift传输协议
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>TCOMPACT</code></td><td><code>0</code></td><td>
+TCompactProtocl
+<br/></td></tr>
+<tr><td><code>TJSON</code></td><td><code>1</code></td><td>
+TJSONProtocol
+<br/></td></tr>
+<tr><td><code>TBINARY</code></td><td><code>2</code></td><td>
+TBINARYProtocol
+<br/></td></tr>
+</table></div>
+<hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_Version">Struct: Version</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>major</td><td><code>i32</code></td><td>主版本号，不同版本号之间不兼容
-</td><td>required</td><td><code>1</code></td></tr>
+</td><td>required</td><td>1</td></tr>
 <tr><td>2</td><td>minor</td><td><code>i32</code></td><td>次版本号，不同版本号之间向后兼容
-</td><td>required</td><td><code>0</code></td></tr>
+</td><td>required</td><td>0</td></tr>
 <tr><td>3</td><td>patch</td><td><code>string</code></td><td>构建版本号，不同版本之间互相兼容
-</td><td>optional</td><td><code>"aba8f1a1"</code></td></tr>
+</td><td>optional</td><td>"20bd2b7f"</td></tr>
 <tr><td>4</td><td>comments</td><td><code>string</code></td><td>附加信息
-</td><td>optional</td><td><code>""</code></td></tr>
+</td><td>optional</td><td>""</td></tr>
 </table><br/>版本号，规则详见http://semver.org
 <br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BaseService">Service: BaseService</h3>
