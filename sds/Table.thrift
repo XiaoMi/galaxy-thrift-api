@@ -129,8 +129,8 @@ union Value {
  * 数据单元
  */
 struct Datum {
-  1: required DataType type,
-  2: required Value value;
+  1: optional DataType type,
+  2: optional Value value;
 }
 
 /**
@@ -182,7 +182,7 @@ struct TableQuota {
 }
 
 struct KeySpec {
-  1: required string attribute,
+  1: optional string attribute,
   2: optional bool asc = true,
 }
 
@@ -222,7 +222,7 @@ struct LocalSecondaryIndexSpec {
   /**
    * 索引定义
    */
-  1: required IndexSpec indexSchema,
+  1: optional IndexSpec indexSchema,
   /**
    * 映射的属性，仅当索引类型为Eager时才可设置
    */
@@ -288,7 +288,7 @@ struct EntityGroupSpec {
   /**
    * 属性有序列表
    */
-  1: required IndexSpec attributes,
+  1: optional IndexSpec attributes,
   /**
    * 是否对属性进行哈希分布:
    * 开启后表中记录按照(hash(attribute value), attribute value)大小顺序分布
@@ -326,7 +326,7 @@ struct TableSchema {
   /**
    * 属性定义
    */
-  5: required map<string, DataType> attributes,
+  5: optional map<string, DataType> attributes,
   /**
    * 记录存活时间，单位为秒。-1表示不会自动删除
    */
@@ -459,8 +459,8 @@ struct TableInfo {
  * 简单条件，用于checkAndPut/Delete操作，判定逻辑为: value operator field
  */
 struct SimpleCondition {
-  1: required OperatorType operator,
-  2: required string field,
+  1: optional OperatorType operator,
+  2: optional string field,
   3: optional Datum value,
 }
 
@@ -475,11 +475,11 @@ struct TableSplit {
 }
 
 struct GetRequest {
-  1: required string tableName,
+  1: optional string tableName,
   /**
    * 记录主键，必须包含主键所有的属性
    */
-  2: required Dictionary keys,
+  2: optional Dictionary keys,
   /**
    * 需要返回的属性列表，不指定表示返回所有属性
    */
@@ -491,11 +491,11 @@ struct GetResult {
 }
 
 struct PutRequest {
-  1: required string tableName,
+  1: optional string tableName,
   /**
    * 待写入的记录
    */
-  2: required Dictionary record,
+  2: optional Dictionary record,
   /**
    * 仅当满足指定条件时执行写入操作
    */
@@ -510,15 +510,15 @@ struct PutResult {
 }
 
 struct IncrementRequest {
-  1: required string tableName,
+  1: optional string tableName,
   /**
    * 待自增的记录主键
    */
-  2: required Dictionary keys,
+  2: optional Dictionary keys,
   /**
    * 需要进行自增操作的属性，必须为整形，且不能为索引属性
    */
-  3: required Dictionary amounts
+  3: optional Dictionary amounts
 }
 
 struct IncrementResult {
@@ -526,11 +526,11 @@ struct IncrementResult {
 }
 
 struct RemoveRequest {
-  1: required string tableName,
+  1: optional string tableName,
   /**
    * 待删除的记录主键
    */
-  2: required Dictionary keys,
+  2: optional Dictionary keys,
   /**
    * 待删除的属性列表，不指定表示删除整条记录。
    * 当删除部分属性时，即使所有属性均已被删除，记录仍存在，删除整条记录需要显式删除
@@ -555,7 +555,7 @@ struct RemoveResult {
  * 当指定索引时，查询范围的entity group必须唯一指定
  */
 struct ScanRequest {
-  1: required string tableName,
+  1: optional string tableName,
   /**
    * 不指定表示通过主键进行查询
    */
@@ -640,8 +640,8 @@ union Request {
 }
 
 struct BatchRequestItem {
-  1: required BatchOp action,
-  2: required Request request,
+  1: optional BatchOp action,
+  2: optional Request request,
 }
 
 union Result {
@@ -655,11 +655,11 @@ struct BatchResultItem {
   /**
    * 操作类型
    */
-  1: required BatchOp action,
+  1: optional BatchOp action,
   /**
    * 是否成功执行，即无异常
    */
-  2: required bool success,
+  2: optional bool success,
   /**
    * 操作结果，操作成功时被设置
    */
@@ -671,7 +671,7 @@ struct BatchResultItem {
 }
 
 struct BatchRequest {
-  1: required list<BatchRequestItem> items,
+  1: optional list<BatchRequestItem> items,
 }
 
 struct BatchResult {

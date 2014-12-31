@@ -72,7 +72,7 @@ struct Credential {
   /**
    * 用户登录类型
    */
-  1: required UserType type,
+  1: optional UserType type,
 
   /**
    * 用于服务端查询SecretKey的键值:
@@ -80,7 +80,7 @@ struct Credential {
    * 2) appId: 对应App Secret，匿名登录也需设置
    * 3) storageAccessTokenId: 对应Storage Access Token
    */
-  2: required string secretKeyId,
+  2: optional string secretKeyId,
 
   /**
    * Secret Key
@@ -101,9 +101,9 @@ enum MacAlgorithm {
  * Authorization头包含的内容
  */
 struct HttpAuthorizationHeader {
-  1: required string version = "SDS-V1",
-  2: required UserType userType = UserType.APP_ANONYMOUS,
-  3: required string secretKeyId,
+  1: optional string version = "SDS-V1",
+  2: optional UserType userType = UserType.APP_ANONYMOUS,
+  3: optional string secretKeyId,
   /**
    * 直接使用sercetKey，此项被设置时，signature将被忽略，
    * 非安全传输应使用签名

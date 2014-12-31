@@ -49,15 +49,15 @@ struct Version {
   /**
    * 主版本号，不同版本号之间不兼容
    */
-  1: required i32 major = 1,
+  1: optional i32 major = 1,
   /**
    * 次版本号，不同版本号之间向后兼容
    */
-  2: required i32 minor = 0,
+  2: optional i32 minor = 0,
   /**
    * 构建版本号，不同版本之间互相兼容
    */
-  3: optional string patch = 'aba8f1a1',
+  3: optional string patch = 'e882eb61',
   /**
    * 附加信息
    */

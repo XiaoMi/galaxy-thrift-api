@@ -275,8 +275,8 @@ ACL设置，为appId到其配置的权限的映射
 </table><br/>数据值union类型
 <br/></div><div class="definition"><h3 id="Struct_Datum">Struct: Datum</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>type</td><td><code><a href="Table.html#Enum_DataType">DataType</a></code></td><td></td><td>required</td><td></td></tr>
-<tr><td>2</td><td>value</td><td><code><a href="Table.html#Struct_Value">Value</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>type</td><td><code><a href="Table.html#Enum_DataType">DataType</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>value</td><td><code><a href="Table.html#Struct_Value">Value</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>数据单元
 <br/></div><div class="definition"><h3 id="Struct_ProvisionThroughput">Struct: ProvisionThroughput</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -290,12 +290,12 @@ ACL设置，为appId到其配置的权限的映射
 </table><br/>空间配额
 <br/></div><div class="definition"><h3 id="Struct_KeySpec">Struct: KeySpec</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>attribute</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>attribute</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>asc</td><td><code>bool</code></td><td></td><td>optional</td><td><code>true</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_LocalSecondaryIndexSpec">Struct: LocalSecondaryIndexSpec</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>indexSchema</td><td><code><a href="Table.html#Typedef_IndexSpec">IndexSpec</a></code></td><td>索引定义
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>projections</td><td><code><a href="Table.html#Typedef_Attributes">Attributes</a></code></td><td>映射的属性，仅当索引类型为Eager时才可设置
 </td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>consistencyMode</td><td><code><a href="Table.html#Enum_SecondaryIndexConsistencyMode">SecondaryIndexConsistencyMode</a></code></td><td>索引数据一致性模式
@@ -306,7 +306,7 @@ ACL设置，为appId到其配置的权限的映射
 <br/></div><div class="definition"><h3 id="Struct_EntityGroupSpec">Struct: EntityGroupSpec</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>attributes</td><td><code><a href="Table.html#Typedef_IndexSpec">IndexSpec</a></code></td><td>属性有序列表
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>enableHash</td><td><code>bool</code></td><td>是否对属性进行哈希分布:
 开启后表中记录按照(hash(attribute value), attribute value)大小顺序分布
 </td><td>optional</td><td><code>true</code></td></tr>
@@ -324,7 +324,7 @@ ACL设置，为appId到其配置的权限的映射
 <tr><td>4</td><td>secondaryIndexes</td><td><code>map&lt;<code>string</code>, <code><a href="Table.html#Struct_LocalSecondaryIndexSpec">LocalSecondaryIndexSpec</a></code>&gt;</code></td><td>二级索引定义
 </td><td>optional</td><td></td></tr>
 <tr><td>5</td><td>attributes</td><td><code>map&lt;<code>string</code>, <code><a href="Table.html#Enum_DataType">DataType</a></code>&gt;</code></td><td>属性定义
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>6</td><td>ttl</td><td><code>i32</code></td><td>记录存活时间，单位为秒。-1表示不会自动删除
 </td><td>optional</td><td><code>-1</code></td></tr>
 <tr><td>7</td><td>preSplits</td><td><code>i32</code></td><td>表初始分片数目，仅支持Entity Group开启hash分布的表，且仅在建表时起作用
@@ -375,8 +375,8 @@ ACL设置，为appId到其配置的权限的映射
 </table><br/>表信息
 <br/></div><div class="definition"><h3 id="Struct_SimpleCondition">Struct: SimpleCondition</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>operator</td><td><code><a href="Table.html#Enum_OperatorType">OperatorType</a></code></td><td></td><td>required</td><td></td></tr>
-<tr><td>2</td><td>field</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>operator</td><td><code><a href="Table.html#Enum_OperatorType">OperatorType</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>field</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>value</td><td><code><a href="Table.html#Struct_Datum">Datum</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>简单条件，用于checkAndPut/Delete操作，判定逻辑为: value operator field
 <br/></div><div class="definition"><h3 id="Struct_TableSplit">Struct: TableSplit</h3>
@@ -386,9 +386,9 @@ ACL设置，为appId到其配置的权限的映射
 </table><br/>表分片信息，包括起始和结束的row key
 <br/></div><div class="definition"><h3 id="Struct_GetRequest">Struct: GetRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>keys</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>记录主键，必须包含主键所有的属性
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>attributes</td><td><code><a href="Table.html#Typedef_Attributes">Attributes</a></code></td><td>需要返回的属性列表，不指定表示返回所有属性
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetResult">Struct: GetResult</h3>
@@ -396,9 +396,9 @@ ACL设置，为appId到其配置的权限的映射
 <tr><td>1</td><td>item</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_PutRequest">Struct: PutRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>record</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>待写入的记录
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>condition</td><td><code><a href="Table.html#Struct_SimpleCondition">SimpleCondition</a></code></td><td>仅当满足指定条件时执行写入操作
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_PutResult">Struct: PutResult</h3>
@@ -407,19 +407,19 @@ ACL设置，为appId到其配置的权限的映射
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_IncrementRequest">Struct: IncrementRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>keys</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>待自增的记录主键
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>amounts</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>需要进行自增操作的属性，必须为整形，且不能为索引属性
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_IncrementResult">Struct: IncrementResult</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>amounts</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RemoveRequest">Struct: RemoveRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>keys</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>待删除的记录主键
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>attributes</td><td><code><a href="Table.html#Typedef_Attributes">Attributes</a></code></td><td>待删除的属性列表，不指定表示删除整条记录。
 当删除部分属性时，即使所有属性均已被删除，记录仍存在，删除整条记录需要显式删除
 </td><td>optional</td><td></td></tr>
@@ -431,7 +431,7 @@ ACL设置，为appId到其配置的权限的映射
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ScanRequest">Struct: ScanRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>indexName</td><td><code>string</code></td><td>不指定表示通过主键进行查询
 </td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>startKey</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>查询范围开始，包含startKey，
@@ -477,8 +477,8 @@ ACL设置，为appId到其配置的权限的映射
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_BatchRequestItem">Struct: BatchRequestItem</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>action</td><td><code><a href="Table.html#Enum_BatchOp">BatchOp</a></code></td><td></td><td>required</td><td></td></tr>
-<tr><td>2</td><td>request</td><td><code><a href="Table.html#Struct_Request">Request</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>action</td><td><code><a href="Table.html#Enum_BatchOp">BatchOp</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>request</td><td><code><a href="Table.html#Struct_Request">Request</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Result">Union: Result</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>getResult</td><td><code><a href="Table.html#Struct_GetResult">GetResult</a></code></td><td></td><td>optional</td><td></td></tr>
@@ -488,16 +488,16 @@ ACL设置，为appId到其配置的权限的映射
 </table><br/></div><div class="definition"><h3 id="Struct_BatchResultItem">Struct: BatchResultItem</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>action</td><td><code><a href="Table.html#Enum_BatchOp">BatchOp</a></code></td><td>操作类型
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>success</td><td><code>bool</code></td><td>是否成功执行，即无异常
-</td><td>required</td><td></td></tr>
+</td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>result</td><td><code><a href="Table.html#Struct_Result">Result</a></code></td><td>操作结果，操作成功时被设置
 </td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>serviceException</td><td><code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code></td><td>操作时发生的异常，操作失败时被设置
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_BatchRequest">Struct: BatchRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>items</td><td><code>list&lt;<code><a href="Table.html#Struct_BatchRequestItem">BatchRequestItem</a></code>&gt;</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>1</td><td>items</td><td><code>list&lt;<code><a href="Table.html#Struct_BatchRequestItem">BatchRequestItem</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_BatchResult">Struct: BatchResult</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>items</td><td><code>list&lt;<code><a href="Table.html#Struct_BatchResultItem">BatchResultItem</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
