@@ -456,6 +456,8 @@ ACL设置，为appId到其配置的权限的映射
 </td><td>optional</td><td><code>true</code></td></tr>
 <tr><td>10</td><td>cacheResult</td><td><code>bool</code></td><td>是否将结果放入cache，对于类似MapReduce的大批量扫描的应用应该关闭此选项
 </td><td>optional</td><td><code>true</code></td></tr>
+<tr><td>11</td><td>lookAheadStep</td><td><code>i32</code></td><td>查找属性在seek之前进行顺序skip的次数。非必要情况，请不要设置
+</td><td>optional</td><td><code>0</code></td></tr>
 </table><br/>范围查询，支持主键和二级索引查询，
 查询范围为闭开区间[startKey, endKey)，
 当指定索引时，查询范围的entity group必须唯一指定

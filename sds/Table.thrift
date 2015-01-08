@@ -600,6 +600,12 @@ struct ScanRequest {
    * 是否将结果放入cache，对于类似MapReduce的大批量扫描的应用应该关闭此选项
    */
   10: optional bool cacheResult = true;
+
+  /**
+   * 查找属性在seek之前进行顺序skip的次数。非必要情况，请不要设置
+   */
+  11: optional i32 lookAheadStep = 0;
+
 }
 
 struct ScanResult {
