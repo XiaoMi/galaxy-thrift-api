@@ -343,5 +343,10 @@ service AdminService extends Common.BaseService {
    */
   list<TimeSeriesData> queryMetrics(1: list<MetricQueryRequest> queries)
     throws (1: Errors.ServiceException se),
+
+  /**
+   * 获取AppId列表
+   */
+  list<string> findAllAppIds() throws (1: Errors.ServiceException se),
 }
 

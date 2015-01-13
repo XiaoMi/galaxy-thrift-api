@@ -18,6 +18,7 @@
 <li><a href="#Fn_AdminService_disableTable">disableTable</a></li>
 <li><a href="#Fn_AdminService_dropTable">dropTable</a></li>
 <li><a href="#Fn_AdminService_enableTable">enableTable</a></li>
+<li><a href="#Fn_AdminService_findAllAppIds">findAllAppIds</a></li>
 <li><a href="#Fn_AdminService_findAllApps">findAllApps</a></li>
 <li><a href="#Fn_AdminService_findAllTables">findAllTables</a></li>
 <li><a href="#Fn_AdminService_getAppInfo">getAppInfo</a></li>
@@ -282,4 +283,8 @@ Batch 调用延迟
 <pre><code>list&lt;<code><a href="Admin.html#Struct_TimeSeriesData">TimeSeriesData</a></code>&gt;</code> queryMetrics(<code>list&lt;<code><a href="Admin.html#Struct_MetricQueryRequest">MetricQueryRequest</a></code>&gt;</code> queries)
     throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
 </pre>批量查询表统计指标
+<br/></div><div class="definition"><h4 id="Fn_AdminService_findAllAppIds">Function: AdminService.findAllAppIds</h4>
+<pre><code>list&lt;<code>string</code>&gt;</code> findAllAppIds()
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>获取AppId列表
 <br/></div></div></body></html>

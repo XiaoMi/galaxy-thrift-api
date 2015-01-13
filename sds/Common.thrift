@@ -57,7 +57,7 @@ struct Version {
   /**
    * 构建版本号，不同版本之间互相兼容
    */
-  3: optional string patch = '84c7c412',
+  3: optional string patch = 'aab20c67',
   /**
    * 附加信息
    */
