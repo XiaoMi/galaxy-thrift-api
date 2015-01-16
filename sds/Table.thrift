@@ -594,7 +594,7 @@ struct ScanRequest {
   /**
    * 是否全局有序扫描
    */
-  9: optional bool inGlobalOrder = true;
+  9: optional bool inGlobalOrder = true,
 
   /**
    * 是否将结果放入cache，对于类似MapReduce的大批量扫描的应用应该关闭此选项
@@ -605,7 +605,6 @@ struct ScanRequest {
    * 查找属性在seek之前进行顺序skip的次数。非必要情况，请不要设置
    */
   11: optional i32 lookAheadStep = 0;
-
 }
 
 struct ScanResult {
@@ -617,6 +616,18 @@ struct ScanResult {
    * 扫描的记录
    */
   2: optional list<Dictionary> records,
+  /**
+   * 是否超过表的qps quota
+   */
+  3: optional bool throttle,
+  /**
+   * 是否成功扫描到所有数据
+   */
+  4: optional bool success,
+  /**
+   * 已经扫描的记录条数
+   */
+  5: optional i32 scannedRecords,
 }
 
 enum BatchOp {

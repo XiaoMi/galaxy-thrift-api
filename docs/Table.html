@@ -467,6 +467,12 @@ ACL设置，为appId到其配置的权限的映射
 </td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>records</td><td><code>list&lt;<code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code>&gt;</code></td><td>扫描的记录
 </td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>throttle</td><td><code>bool</code></td><td>是否超过表的qps quota
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>success</td><td><code>bool</code></td><td>是否成功扫描到所有数据
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>scannedRecords</td><td><code>i32</code></td><td>已经扫描的记录条数
+</td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Request">Union: Request</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>getRequest</td><td><code><a href="Table.html#Struct_GetRequest">GetRequest</a></code></td><td>随机读操作
