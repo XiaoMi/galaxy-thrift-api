@@ -235,8 +235,8 @@ $tableSpec = new TableSpec(array(
   'metadata' => new TableMetadata(array(
       'quota' => new TableQuota(array('size' => 100 * 1024 * 1024)),
       'throughput' => new ProvisionThroughput(array(
-          'readQps' => 100,
-          'writeQps' => 200
+          'readCapacity' => 100,
+          'writeCapacity' => 200
         ))
     ))
 ));
