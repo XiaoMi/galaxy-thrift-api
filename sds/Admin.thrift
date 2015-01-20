@@ -28,6 +28,10 @@ struct AppInfo {
    * 应用OAuth信息, OAuth提供方到第三方OAuth应用信息(如OAuth AppID)的映射
    */
   4: optional map<string, string> oauthAppMapping,
+  /**
+   * 小米应用名称
+   */
+  5: optional string appName,
 }
 
 /**
@@ -345,8 +349,8 @@ service AdminService extends Common.BaseService {
     throws (1: Errors.ServiceException se),
 
   /**
-   * 获取AppId列表
+   * 获取AppInfo列表,只包括appId和appName
    */
-  list<string> findAllAppIds() throws (1: Errors.ServiceException se),
+   list<AppInfo> findAllAppInfo() throws (1: Errors.ServiceException se),
 }
 
