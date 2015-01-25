@@ -129,6 +129,26 @@ struct HttpAuthorizationHeader {
 }
 
 /**
+ * 签名相关的HTTP头，
+ * 根据分层防御的设计，使用HTTPS也建议进行签名:
+ * http://bitcoin.stackexchange.com/questions/21732/why-api-of-bitcoin-exchanges-use-hmac-over-https-ssl
+ */
+const string HK_HOST = "Host"
+/**
+ * 签名时间，1970/0/0开始的秒数，如客户端与服务器时钟相差较大，会返回CLOCK_TOO_SKEWED错误
+ */
+const string HK_TIMESTAMP = "X-Xiaomi-Timestamp"
+const string HK_CONTENT_MD5 = "X-Xiaomi-Content-MD5"
+/**
+ * 内容为TJSONTransport.encode(HttpAuthorizationHeader)
+ */
+const string HK_AUTHORIZATION = "Authorization"
+/**
+ * 建议签名应包含的HTTP头
+ */
+const list<string> SUGGESTED_SIGNATURE_HEADERS = [HK_HOST, HK_TIMESTAMP, HK_CONTENT_MD5]
+
+/**
  * 第三方身份认证提供方，用于认证应用用户(非开发者)。
  * 目前提供小米SSO和几种常见OAuth系统
  */

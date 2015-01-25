@@ -10,6 +10,10 @@ namespace go sds.common
  */
 const double DEFAULT_CLIENT_TIMEOUT = 10000
 /**
+ * client端最大读写超时时间（ms）
+ */
+const double DEFAULT_MAX_CLIENT_TIMEOUT = 10000
+/**
  * client端DDL操作超时时间（ms）
  */
 const double DEFAULT_ADMIN_CLIENT_TIMEOUT = 30000
@@ -17,30 +21,6 @@ const double DEFAULT_ADMIN_CLIENT_TIMEOUT = 30000
  * client端连接超时时间（ms）
  */
 const double DEFAULT_CLIENT_CONN_TIMEOUT = 3000
-/**
- * client端读写最大超时时间（ms）
- */
-const double MAX_CLIENT_TIMEOUT = 15000
-/**
- * client端DDL操作最大超时时间（ms）
- */
-const double MAX_ADMIN_CLIENT_TIMEOUT = 40000
-/**
- * client端连接最大超时时间（ms）
- */
-const double MAX_CLIENT_CONN_TIMEOUT = 5000
-/**
- * client端读写最小超时时间（ms）
- */
-const double MIN_CLIENT_TIMEOUT = 8000
-/**
- * client端DDL操作最小超时时间（ms）
- */
-const double MIN_ADMIN_CLIENT_TIMEOUT = 30000
-/**
- * client端连接最小超时时间（ms）
- */
-const double MIN_CLIENT_CONN_TIMEOUT = 3000
 /**
  * HTTP RPC服务地址
  */
@@ -81,7 +61,7 @@ struct Version {
   /**
    * 构建版本号，不同版本之间互相兼容
    */
-  3: optional string patch = '4d3dd740',
+  3: optional string patch = 'b34c53c6',
   /**
    * 附加信息
    */
@@ -147,33 +127,14 @@ const map<string, ThriftProtocol> HEADER_THRIFT_MAP = {
 }
 
 /**
- * 签名相关的HTTP头，
- * 根据分层防御的设计，使用HTTPS也建议进行签名:
- * http://bitcoin.stackexchange.com/questions/21732/why-api-of-bitcoin-exchanges-use-hmac-over-https-ssl
+ * HTTP请求的超时时限
  */
-const string HK_HOST = "Host"
+const string HK_REQUEST_TIMEOUT = "X-Xiaomi-Request-Timeout"
 /**
- * 签名时间，1970/0/0开始的秒数，如客户端与服务器时钟相差较大，会返回CLOCK_TOO_SKEWED错误
+ * HTTP头的错误码
  */
-const string HK_TIMESTAMP = "X-Xiaomi-Timestamp"
-const string HK_CONTENT_MD5 = "X-Xiaomi-Content-MD5"
-/**
- * 内容为TJSONTransport.encode(HttpAuthorizationHeader)
- */
-const string HK_AUTHORIZATION = "Authorization"
-/*
- * 建议签名应包含的HTTP头
- */
-const list<string> SUGGESTED_SIGNATURE_HEADERS = [HK_HOST, HK_TIMESTAMP, HK_CONTENT_MD5]
+const string HK_ERROR_CODE_HEADER = "X-Xiaomi-Error-Code"
 /**
  * HTTP Body最大字节数
  */
 const i32 MAX_CONTENT_SIZE = 524288
-/**
- * 请求的超时时限
- */
-const string REQUEST_TIMEOUT = "X-Xiaomi-Request-Timeout"
-/**
- * HTTP头的错误码
- */
-const string ERROR_CODE_HEADER = "X-Xiaomi-Error-Code"

@@ -25,24 +25,14 @@
 <code><a href="#Const_DEFAULT_ADMIN_CLIENT_TIMEOUT">DEFAULT_ADMIN_CLIENT_TIMEOUT</a></code><br/>
 <code><a href="#Const_DEFAULT_CLIENT_CONN_TIMEOUT">DEFAULT_CLIENT_CONN_TIMEOUT</a></code><br/>
 <code><a href="#Const_DEFAULT_CLIENT_TIMEOUT">DEFAULT_CLIENT_TIMEOUT</a></code><br/>
+<code><a href="#Const_DEFAULT_MAX_CLIENT_TIMEOUT">DEFAULT_MAX_CLIENT_TIMEOUT</a></code><br/>
 <code><a href="#Const_DEFAULT_SECURE_SERVICE_ENDPOINT">DEFAULT_SECURE_SERVICE_ENDPOINT</a></code><br/>
 <code><a href="#Const_DEFAULT_SERVICE_ENDPOINT">DEFAULT_SERVICE_ENDPOINT</a></code><br/>
 <code><a href="#Const_DEFAULT_THRIFT_HEADER">DEFAULT_THRIFT_HEADER</a></code><br/>
-<code><a href="#Const_ERROR_CODE_HEADER">ERROR_CODE_HEADER</a></code><br/>
 <code><a href="#Const_HEADER_THRIFT_MAP">HEADER_THRIFT_MAP</a></code><br/>
-<code><a href="#Const_HK_AUTHORIZATION">HK_AUTHORIZATION</a></code><br/>
-<code><a href="#Const_HK_CONTENT_MD5">HK_CONTENT_MD5</a></code><br/>
-<code><a href="#Const_HK_HOST">HK_HOST</a></code><br/>
-<code><a href="#Const_HK_TIMESTAMP">HK_TIMESTAMP</a></code><br/>
-<code><a href="#Const_MAX_ADMIN_CLIENT_TIMEOUT">MAX_ADMIN_CLIENT_TIMEOUT</a></code><br/>
-<code><a href="#Const_MAX_CLIENT_CONN_TIMEOUT">MAX_CLIENT_CONN_TIMEOUT</a></code><br/>
-<code><a href="#Const_MAX_CLIENT_TIMEOUT">MAX_CLIENT_TIMEOUT</a></code><br/>
+<code><a href="#Const_HK_ERROR_CODE_HEADER">HK_ERROR_CODE_HEADER</a></code><br/>
+<code><a href="#Const_HK_REQUEST_TIMEOUT">HK_REQUEST_TIMEOUT</a></code><br/>
 <code><a href="#Const_MAX_CONTENT_SIZE">MAX_CONTENT_SIZE</a></code><br/>
-<code><a href="#Const_MIN_ADMIN_CLIENT_TIMEOUT">MIN_ADMIN_CLIENT_TIMEOUT</a></code><br/>
-<code><a href="#Const_MIN_CLIENT_CONN_TIMEOUT">MIN_CLIENT_CONN_TIMEOUT</a></code><br/>
-<code><a href="#Const_MIN_CLIENT_TIMEOUT">MIN_CLIENT_TIMEOUT</a></code><br/>
-<code><a href="#Const_REQUEST_TIMEOUT">REQUEST_TIMEOUT</a></code><br/>
-<code><a href="#Const_SUGGESTED_SIGNATURE_HEADERS">SUGGESTED_SIGNATURE_HEADERS</a></code><br/>
 <code><a href="#Const_TABLE_SERVICE_PATH">TABLE_SERVICE_PATH</a></code><br/>
 <code><a href="#Const_THRIFT_BINARY_HEADER">THRIFT_BINARY_HEADER</a></code><br/>
 <code><a href="#Const_THRIFT_COMPACT_HEADER">THRIFT_COMPACT_HEADER</a></code><br/>
@@ -53,14 +43,9 @@
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
 <tr id="Const_DEFAULT_CLIENT_TIMEOUT"><td><code>DEFAULT_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>10000</code></td></tr><tr><td colspan="3"><blockquote>client端读写超时时间（ms）
+<br/></blockquote></td></tr><tr id="Const_DEFAULT_MAX_CLIENT_TIMEOUT"><td><code>DEFAULT_MAX_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>10000</code></td></tr><tr><td colspan="3"><blockquote>client端最大读写超时时间（ms）
 <br/></blockquote></td></tr><tr id="Const_DEFAULT_ADMIN_CLIENT_TIMEOUT"><td><code>DEFAULT_ADMIN_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>30000</code></td></tr><tr><td colspan="3"><blockquote>client端DDL操作超时时间（ms）
 <br/></blockquote></td></tr><tr id="Const_DEFAULT_CLIENT_CONN_TIMEOUT"><td><code>DEFAULT_CLIENT_CONN_TIMEOUT</code></td><td><code>double</code></td><td><code>3000</code></td></tr><tr><td colspan="3"><blockquote>client端连接超时时间（ms）
-<br/></blockquote></td></tr><tr id="Const_MAX_CLIENT_TIMEOUT"><td><code>MAX_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>15000</code></td></tr><tr><td colspan="3"><blockquote>client端读写最大超时时间（ms）
-<br/></blockquote></td></tr><tr id="Const_MAX_ADMIN_CLIENT_TIMEOUT"><td><code>MAX_ADMIN_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>40000</code></td></tr><tr><td colspan="3"><blockquote>client端DDL操作最大超时时间（ms）
-<br/></blockquote></td></tr><tr id="Const_MAX_CLIENT_CONN_TIMEOUT"><td><code>MAX_CLIENT_CONN_TIMEOUT</code></td><td><code>double</code></td><td><code>5000</code></td></tr><tr><td colspan="3"><blockquote>client端连接最大超时时间（ms）
-<br/></blockquote></td></tr><tr id="Const_MIN_CLIENT_TIMEOUT"><td><code>MIN_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>8000</code></td></tr><tr><td colspan="3"><blockquote>client端读写最小超时时间（ms）
-<br/></blockquote></td></tr><tr id="Const_MIN_ADMIN_CLIENT_TIMEOUT"><td><code>MIN_ADMIN_CLIENT_TIMEOUT</code></td><td><code>double</code></td><td><code>30000</code></td></tr><tr><td colspan="3"><blockquote>client端DDL操作最小超时时间（ms）
-<br/></blockquote></td></tr><tr id="Const_MIN_CLIENT_CONN_TIMEOUT"><td><code>MIN_CLIENT_CONN_TIMEOUT</code></td><td><code>double</code></td><td><code>3000</code></td></tr><tr><td colspan="3"><blockquote>client端连接最小超时时间（ms）
 <br/></blockquote></td></tr><tr id="Const_DEFAULT_SERVICE_ENDPOINT"><td><code>DEFAULT_SERVICE_ENDPOINT</code></td><td><code>string</code></td><td><code>"http://sds.api.xiaomi.com"</code></td></tr><tr><td colspan="3"><blockquote>HTTP RPC服务地址
 <br/></blockquote></td></tr><tr id="Const_DEFAULT_SECURE_SERVICE_ENDPOINT"><td><code>DEFAULT_SECURE_SERVICE_ENDPOINT</code></td><td><code>string</code></td><td><code>"https://sds.api.xiaomi.com"</code></td></tr><tr><td colspan="3"><blockquote>HTTPS RPC服务地址
 <br/></blockquote></td></tr><tr id="Const_API_ROOT_PATH"><td><code>API_ROOT_PATH</code></td><td><code>string</code></td><td><code>"/v1/api"</code></td></tr><tr><td colspan="3"><blockquote>RPC根路径
@@ -68,14 +53,9 @@
 <br/></blockquote></td></tr><tr id="Const_ADMIN_SERVICE_PATH"><td><code>ADMIN_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/admin"</code></td></tr><tr><td colspan="3"><blockquote>管理操作RPC路径
 <br/></blockquote></td></tr><tr id="Const_TABLE_SERVICE_PATH"><td><code>TABLE_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/table"</code></td></tr><tr><td colspan="3"><blockquote>表数据访问RPC路径
 <br/></blockquote></td></tr><tr id="Const_DEFAULT_THRIFT_HEADER"><td><code>DEFAULT_THRIFT_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift"</code></td></tr><tr><td colspan="3"><blockquote>兼容其它SDK，等同于application/x-thrift-json
-<br/></blockquote></td></tr><tr id="Const_THRIFT_JSON_HEADER"><td><code>THRIFT_JSON_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-json"</code></td></tr><tr id="Const_THRIFT_COMPACT_HEADER"><td><code>THRIFT_COMPACT_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-compact"</code></td></tr><tr id="Const_THRIFT_BINARY_HEADER"><td><code>THRIFT_BINARY_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-binary"</code></td></tr><tr id="Const_THRIFT_HEADER_MAP"><td><code>THRIFT_HEADER_MAP</code></td><td><code>map&lt;<code><a href="Common.html#Enum_ThriftProtocol">ThriftProtocol</a></code>, <code>string</code>&gt;</code></td><td><code>{ <code><a href="#Const_ThriftProtocol.TCOMPACT">ThriftProtocol.TCOMPACT</a></code> = "application/x-thrift-compact", <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code> = "application/x-thrift-json", <code><a href="#Const_ThriftProtocol.TBINARY">ThriftProtocol.TBINARY</a></code> = "application/x-thrift-binary" }</code></td></tr><tr id="Const_HEADER_THRIFT_MAP"><td><code>HEADER_THRIFT_MAP</code></td><td><code>map&lt;<code>string</code>, <code><a href="Common.html#Enum_ThriftProtocol">ThriftProtocol</a></code>&gt;</code></td><td><code>{ "application/x-thrift-compact" = <code><a href="#Const_ThriftProtocol.TCOMPACT">ThriftProtocol.TCOMPACT</a></code>, "application/x-thrift-json" = <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code>, "application/x-thrift-binary" = <code><a href="#Const_ThriftProtocol.TBINARY">ThriftProtocol.TBINARY</a></code>, "application/x-thrift" = <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code> }</code></td></tr><tr id="Const_HK_HOST"><td><code>HK_HOST</code></td><td><code>string</code></td><td><code>"Host"</code></td></tr><tr><td colspan="3"><blockquote>签名相关的HTTP头，
-根据分层防御的设计，使用HTTPS也建议进行签名:
-http://bitcoin.stackexchange.com/questions/21732/why-api-of-bitcoin-exchanges-use-hmac-over-https-ssl
-<br/></blockquote></td></tr><tr id="Const_HK_TIMESTAMP"><td><code>HK_TIMESTAMP</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Timestamp"</code></td></tr><tr><td colspan="3"><blockquote>签名时间，1970/0/0开始的秒数，如客户端与服务器时钟相差较大，会返回CLOCK_TOO_SKEWED错误
-<br/></blockquote></td></tr><tr id="Const_HK_CONTENT_MD5"><td><code>HK_CONTENT_MD5</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Content-MD5"</code></td></tr><tr id="Const_HK_AUTHORIZATION"><td><code>HK_AUTHORIZATION</code></td><td><code>string</code></td><td><code>"Authorization"</code></td></tr><tr><td colspan="3"><blockquote>内容为TJSONTransport.encode(HttpAuthorizationHeader)
-<br/></blockquote></td></tr><tr id="Const_SUGGESTED_SIGNATURE_HEADERS"><td><code>SUGGESTED_SIGNATURE_HEADERS</code></td><td><code>list&lt;<code>string</code>&gt;</code></td><td><code>{ "Host", "X-Xiaomi-Timestamp", "X-Xiaomi-Content-MD5" }</code></td></tr><tr id="Const_MAX_CONTENT_SIZE"><td><code>MAX_CONTENT_SIZE</code></td><td><code>i32</code></td><td><code>524288</code></td></tr><tr><td colspan="3"><blockquote>HTTP Body最大字节数
-<br/></blockquote></td></tr><tr id="Const_REQUEST_TIMEOUT"><td><code>REQUEST_TIMEOUT</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Request-Timeout"</code></td></tr><tr><td colspan="3"><blockquote>请求的超时时限
-<br/></blockquote></td></tr><tr id="Const_ERROR_CODE_HEADER"><td><code>ERROR_CODE_HEADER</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Error-Code"</code></td></tr><tr><td colspan="3"><blockquote>HTTP头的错误码
+<br/></blockquote></td></tr><tr id="Const_THRIFT_JSON_HEADER"><td><code>THRIFT_JSON_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-json"</code></td></tr><tr id="Const_THRIFT_COMPACT_HEADER"><td><code>THRIFT_COMPACT_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-compact"</code></td></tr><tr id="Const_THRIFT_BINARY_HEADER"><td><code>THRIFT_BINARY_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-binary"</code></td></tr><tr id="Const_THRIFT_HEADER_MAP"><td><code>THRIFT_HEADER_MAP</code></td><td><code>map&lt;<code><a href="Common.html#Enum_ThriftProtocol">ThriftProtocol</a></code>, <code>string</code>&gt;</code></td><td><code>{ <code><a href="#Const_ThriftProtocol.TCOMPACT">ThriftProtocol.TCOMPACT</a></code> = "application/x-thrift-compact", <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code> = "application/x-thrift-json", <code><a href="#Const_ThriftProtocol.TBINARY">ThriftProtocol.TBINARY</a></code> = "application/x-thrift-binary" }</code></td></tr><tr id="Const_HEADER_THRIFT_MAP"><td><code>HEADER_THRIFT_MAP</code></td><td><code>map&lt;<code>string</code>, <code><a href="Common.html#Enum_ThriftProtocol">ThriftProtocol</a></code>&gt;</code></td><td><code>{ "application/x-thrift-compact" = <code><a href="#Const_ThriftProtocol.TCOMPACT">ThriftProtocol.TCOMPACT</a></code>, "application/x-thrift-json" = <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code>, "application/x-thrift-binary" = <code><a href="#Const_ThriftProtocol.TBINARY">ThriftProtocol.TBINARY</a></code>, "application/x-thrift" = <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code> }</code></td></tr><tr id="Const_HK_REQUEST_TIMEOUT"><td><code>HK_REQUEST_TIMEOUT</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Request-Timeout"</code></td></tr><tr><td colspan="3"><blockquote>HTTP请求的超时时限
+<br/></blockquote></td></tr><tr id="Const_HK_ERROR_CODE_HEADER"><td><code>HK_ERROR_CODE_HEADER</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Error-Code"</code></td></tr><tr><td colspan="3"><blockquote>HTTP头的错误码
+<br/></blockquote></td></tr><tr id="Const_MAX_CONTENT_SIZE"><td><code>MAX_CONTENT_SIZE</code></td><td><code>i32</code></td><td><code>524288</code></td></tr><tr><td colspan="3"><blockquote>HTTP Body最大字节数
 <br/></blockquote></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
 <div class="definition"><h3 id="Enum_ThriftProtocol">Enumeration: ThriftProtocol</h3>
 thrift传输协议
@@ -98,7 +78,7 @@ TBINARYProtocol
 <tr><td>2</td><td>minor</td><td><code>i32</code></td><td>次版本号，不同版本号之间向后兼容
 </td><td>optional</td><td><code>0</code></td></tr>
 <tr><td>3</td><td>patch</td><td><code>string</code></td><td>构建版本号，不同版本之间互相兼容
-</td><td>optional</td><td><code>"4d3dd740"</code></td></tr>
+</td><td>optional</td><td><code>"b34c53c6"</code></td></tr>
 <tr><td>4</td><td>comments</td><td><code>string</code></td><td>附加信息
 </td><td>optional</td><td><code>""</code></td></tr>
 </table><br/>版本号，规则详见http://semver.org

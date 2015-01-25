@@ -20,12 +20,23 @@
 <a href="#Enum_MacAlgorithm">MacAlgorithm</a><br/>
 <a href="#Enum_UserType">UserType</a><br/>
 </td>
-<td><code><a href="#Const_SIGNATURE_SUPPORT">SIGNATURE_SUPPORT</a></code><br/>
+<td><code><a href="#Const_HK_AUTHORIZATION">HK_AUTHORIZATION</a></code><br/>
+<code><a href="#Const_HK_CONTENT_MD5">HK_CONTENT_MD5</a></code><br/>
+<code><a href="#Const_HK_HOST">HK_HOST</a></code><br/>
+<code><a href="#Const_HK_TIMESTAMP">HK_TIMESTAMP</a></code><br/>
+<code><a href="#Const_SIGNATURE_SUPPORT">SIGNATURE_SUPPORT</a></code><br/>
+<code><a href="#Const_SUGGESTED_SIGNATURE_HEADERS">SUGGESTED_SIGNATURE_HEADERS</a></code><br/>
 </code></td>
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
 <tr id="Const_SIGNATURE_SUPPORT"><td><code>SIGNATURE_SUPPORT</code></td><td><code>map&lt;<code><a href="Authentication.html#Enum_UserType">UserType</a></code>, <code>bool</code>&gt;</code></td><td><code>{ <code><a href="#Const_UserType.DEV_XIAOMI_SSO">UserType.DEV_XIAOMI_SSO</a></code> = false, <code><a href="#Const_UserType.DEV_XIAOMI">UserType.DEV_XIAOMI</a></code> = true, <code><a href="#Const_UserType.APP_SECRET">UserType.APP_SECRET</a></code> = true, <code><a href="#Const_UserType.APP_ACCESS_TOKEN">UserType.APP_ACCESS_TOKEN</a></code> = true, <code><a href="#Const_UserType.APP_XIAOMI_SSO">UserType.APP_XIAOMI_SSO</a></code> = false, <code><a href="#Const_UserType.APP_ANONYMOUS">UserType.APP_ANONYMOUS</a></code> = false }</code></td></tr><tr><td colspan="3"><blockquote>登录方式是否支持签名
+<br/></blockquote></td></tr><tr id="Const_HK_HOST"><td><code>HK_HOST</code></td><td><code>string</code></td><td><code>"Host"</code></td></tr><tr><td colspan="3"><blockquote>签名相关的HTTP头，
+根据分层防御的设计，使用HTTPS也建议进行签名:
+http://bitcoin.stackexchange.com/questions/21732/why-api-of-bitcoin-exchanges-use-hmac-over-https-ssl
+<br/></blockquote></td></tr><tr id="Const_HK_TIMESTAMP"><td><code>HK_TIMESTAMP</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Timestamp"</code></td></tr><tr><td colspan="3"><blockquote>签名时间，1970/0/0开始的秒数，如客户端与服务器时钟相差较大，会返回CLOCK_TOO_SKEWED错误
+<br/></blockquote></td></tr><tr id="Const_HK_CONTENT_MD5"><td><code>HK_CONTENT_MD5</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Content-MD5"</code></td></tr><tr id="Const_HK_AUTHORIZATION"><td><code>HK_AUTHORIZATION</code></td><td><code>string</code></td><td><code>"Authorization"</code></td></tr><tr><td colspan="3"><blockquote>内容为TJSONTransport.encode(HttpAuthorizationHeader)
+<br/></blockquote></td></tr><tr id="Const_SUGGESTED_SIGNATURE_HEADERS"><td><code>SUGGESTED_SIGNATURE_HEADERS</code></td><td><code>list&lt;<code>string</code>&gt;</code></td><td><code>{ "Host", "X-Xiaomi-Timestamp", "X-Xiaomi-Content-MD5" }</code></td></tr><tr><td colspan="3"><blockquote>建议签名应包含的HTTP头
 <br/></blockquote></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
 <div class="definition"><h3 id="Enum_UserType">Enumeration: UserType</h3>
 小米存储系统认证信息类型

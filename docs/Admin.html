@@ -18,6 +18,7 @@
 <li><a href="#Fn_AdminService_disableTable">disableTable</a></li>
 <li><a href="#Fn_AdminService_dropTable">dropTable</a></li>
 <li><a href="#Fn_AdminService_enableTable">enableTable</a></li>
+<li><a href="#Fn_AdminService_findAllAppInfo">findAllAppInfo</a></li>
 <li><a href="#Fn_AdminService_findAllApps">findAllApps</a></li>
 <li><a href="#Fn_AdminService_findAllTables">findAllTables</a></li>
 <li><a href="#Fn_AdminService_getAppInfo">getAppInfo</a></li>
@@ -175,6 +176,8 @@ Batch 调用延迟
 </td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>oauthAppMapping</td><td><code>map&lt;<code>string</code>, <code>string</code>&gt;</code></td><td>应用OAuth信息, OAuth提供方到第三方OAuth应用信息(如OAuth AppID)的映射
 </td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>appName</td><td><code>string</code></td><td>小米应用名称
+</td><td>optional</td><td></td></tr>
 </table><br/>应用信息
 <br/></div><div class="definition"><h3 id="Struct_MetricQueryRequest">Struct: MetricQueryRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -282,4 +285,8 @@ Batch 调用延迟
 <pre><code>list&lt;<code><a href="Admin.html#Struct_TimeSeriesData">TimeSeriesData</a></code>&gt;</code> queryMetrics(<code>list&lt;<code><a href="Admin.html#Struct_MetricQueryRequest">MetricQueryRequest</a></code>&gt;</code> queries)
     throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
 </pre>批量查询表统计指标
+<br/></div><div class="definition"><h4 id="Fn_AdminService_findAllAppInfo">Function: AdminService.findAllAppInfo</h4>
+<pre><code>list&lt;<code><a href="Admin.html#Struct_AppInfo">AppInfo</a></code>&gt;</code> findAllAppInfo()
+    throws <code><a href="Errors.html#Struct_ServiceException">Errors.ServiceException</a></code>
+</pre>获取AppInfo列表,只包括appId和appName
 <br/></div></div></body></html>
