@@ -147,10 +147,6 @@ const string HK_AUTHORIZATION = "Authorization"
  * 建议签名应包含的HTTP头
  */
 const list<string> SUGGESTED_SIGNATURE_HEADERS = [HK_HOST, HK_TIMESTAMP, HK_CONTENT_MD5]
-/**
- * HTTP Body最大字节数
- */
-const i32 MAX_CONTENT_SIZE = 524288
 
 /**
  * 第三方身份认证提供方，用于认证应用用户(非开发者)。

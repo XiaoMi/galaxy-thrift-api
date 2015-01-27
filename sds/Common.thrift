@@ -10,6 +10,10 @@ namespace go sds.common
  */
 const double DEFAULT_CLIENT_TIMEOUT = 10000
 /**
+ * client端最大读写超时时间（ms）
+ */
+const double DEFAULT_MAX_CLIENT_TIMEOUT = 10000
+/**
  * client端DDL操作超时时间（ms）
  */
 const double DEFAULT_ADMIN_CLIENT_TIMEOUT = 30000
@@ -57,7 +61,7 @@ struct Version {
   /**
    * 构建版本号，不同版本之间互相兼容
    */
-  3: optional string patch = 'b0ec2a12',
+  3: optional string patch = 'b34c53c6',
   /**
    * 附加信息
    */
@@ -113,11 +117,24 @@ const map<ThriftProtocol, string> THRIFT_HEADER_MAP = {
   ThriftProtocol.TCOMPACT : THRIFT_COMPACT_HEADER,
   ThriftProtocol.TJSON : THRIFT_JSON_HEADER,
   ThriftProtocol.TBINARY : THRIFT_BINARY_HEADER
-},
+}
 
 const map<string, ThriftProtocol> HEADER_THRIFT_MAP = {
   THRIFT_COMPACT_HEADER : ThriftProtocol.TCOMPACT,
   THRIFT_JSON_HEADER : ThriftProtocol.TJSON,
   THRIFT_BINARY_HEADER : ThriftProtocol.TBINARY,
   DEFAULT_THRIFT_HEADER : ThriftProtocol.TJSON
-},
+}
+
+/**
+ * HTTP请求的超时时限
+ */
+const string HK_REQUEST_TIMEOUT = "X-Xiaomi-Request-Timeout"
+/**
+ * HTTP头的错误码
+ */
+const string HK_ERROR_CODE_HEADER = "X-Xiaomi-Error-Code"
+/**
+ * HTTP Body最大字节数
+ */
+const i32 MAX_CONTENT_SIZE = 524288

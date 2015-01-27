@@ -118,6 +118,10 @@ enum ErrorCode {
    * 不支持的thrift协议类型
    */
   UNSUPPORTED_TPROTOCOL = 36,
+  /**
+   * 请求超时
+   **/
+  REQUEST_TIMEOUT = 37,
 }
 
 enum RetryType {
@@ -141,6 +145,7 @@ const map<ErrorCode, i64> ERROR_BACKOFF = {
    */
   ErrorCode.SERVICE_UNAVAILABLE : 1000,
   ErrorCode.THROUGHPUT_EXCEED : 1000,
+  ErrorCode.REQUEST_TIMEOUT : 0,
   ErrorCode.CLOCK_TOO_SKEWED : 0,
   /**
    * UNSAFE类型
@@ -155,6 +160,7 @@ const map<ErrorCode, i64> ERROR_BACKOFF = {
 const map<ErrorCode, RetryType> ERROR_RETRY_TYPE = {
   ErrorCode.SERVICE_UNAVAILABLE : RetryType.SAFE,
   ErrorCode.THROUGHPUT_EXCEED : RetryType.SAFE,
+  ErrorCode.REQUEST_TIMEOUT : RetryType.SAFE,
   ErrorCode.CLOCK_TOO_SKEWED : RetryType.SAFE,
   ErrorCode.INTERNAL_ERROR :  RetryType.UNSAFE,
   ErrorCode.TTRANSPORT_ERROR : RetryType.UNSAFE

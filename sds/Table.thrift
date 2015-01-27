@@ -130,7 +130,7 @@ union Value {
  */
 struct Datum {
   1: optional DataType type,
-  2: optional Value value;
+  2: optional Value value,
 }
 
 /**
@@ -423,27 +423,27 @@ struct TableStatus {
   /**
    * 表状态
    */
-  1: optional TableState state;
+  1: optional TableState state,
   /**
    * 创建时间
    */
-  2: optional i64 createTime;
+  2: optional i64 createTime,
   /**
    * 最近修改时间
    */
-  3: optional i64 alterTime;
+  3: optional i64 alterTime,
   /**
    * 最近统计时间
    */
-  4: optional i64 statTime;
+  4: optional i64 statTime,
   /**
    * 占用空间统计，单位为字节
    */
-  5: optional i64 size;
+  5: optional i64 size,
   /**
    * 行数统计，非即时精确值
    */
-  6: optional i64 rowCount;
+  6: optional i64 rowCount,
 }
 
 /**
@@ -594,18 +594,17 @@ struct ScanRequest {
   /**
    * 是否全局有序扫描
    */
-  9: optional bool inGlobalOrder = true;
+  9: optional bool inGlobalOrder = true,
 
   /**
    * 是否将结果放入cache，对于类似MapReduce的大批量扫描的应用应该关闭此选项
    */
-  10: optional bool cacheResult = true;
+  10: optional bool cacheResult = true,
 
   /**
    * 查找属性在seek之前进行顺序skip的次数。非必要情况，请不要设置
    */
-  11: optional i32 lookAheadStep = 0;
-
+  11: optional i32 lookAheadStep = 0,
 }
 
 struct ScanResult {
@@ -617,6 +616,10 @@ struct ScanResult {
    * 扫描的记录
    */
   2: optional list<Dictionary> records,
+  /**
+   * 是否超过表的qps quota
+   */
+  3: optional bool throttled,
 }
 
 enum BatchOp {
