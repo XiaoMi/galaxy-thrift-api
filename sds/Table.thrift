@@ -474,6 +474,33 @@ struct TableSplit {
   2: optional Dictionary stopKey,
 }
 
+enum ScanOp {
+  /**
+   * 统计满足查询条件的记录数
+   */
+  COUNT,
+  /**
+   * 删除满足查询条件的记录
+   */
+  DELETE,
+  /**
+   * 更新满足条件的记录
+   */
+  UPDATE,
+}
+
+struct ScanAction {
+  /**
+   * scan时连带操作
+   */
+  1: optional ScanOp action,
+  /**
+   * 实际操作，不需要指定key
+   */
+  2: optional Request request,
+}
+
+
 struct GetRequest {
   1: optional string tableName,
   /**
@@ -605,6 +632,11 @@ struct ScanRequest {
    * 查找属性在seek之前进行顺序skip的次数。非必要情况，请不要设置
    */
   11: optional i32 lookAheadStep = 0,
+
+  /**
+   * scan时的连带操作，包括COUNT，DELETE和UPDATE
+   */
+  12: optional ScanAction action,
 }
 
 struct ScanResult {

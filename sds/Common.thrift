@@ -47,6 +47,11 @@ const string ADMIN_SERVICE_PATH = '/v1/api/admin'
 const string TABLE_SERVICE_PATH = '/v1/api/table'
 
 /**
+ * 开启ScanAction时， 获取操作数据的数目的key值
+ */
+const string SCAN_COUNT = 'count'
+
+/**
  * 版本号，规则详见http://semver.org
  */
 struct Version {
@@ -61,7 +66,7 @@ struct Version {
   /**
    * 构建版本号，不同版本之间互相兼容
    */
-  3: optional string patch = 'b34c53c6',
+  3: optional string patch = 'bf602faf',
   /**
    * 附加信息
    */

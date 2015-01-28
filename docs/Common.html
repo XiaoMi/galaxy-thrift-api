@@ -33,6 +33,7 @@
 <code><a href="#Const_HK_ERROR_CODE_HEADER">HK_ERROR_CODE_HEADER</a></code><br/>
 <code><a href="#Const_HK_REQUEST_TIMEOUT">HK_REQUEST_TIMEOUT</a></code><br/>
 <code><a href="#Const_MAX_CONTENT_SIZE">MAX_CONTENT_SIZE</a></code><br/>
+<code><a href="#Const_SCAN_COUNT">SCAN_COUNT</a></code><br/>
 <code><a href="#Const_TABLE_SERVICE_PATH">TABLE_SERVICE_PATH</a></code><br/>
 <code><a href="#Const_THRIFT_BINARY_HEADER">THRIFT_BINARY_HEADER</a></code><br/>
 <code><a href="#Const_THRIFT_COMPACT_HEADER">THRIFT_COMPACT_HEADER</a></code><br/>
@@ -52,6 +53,7 @@
 <br/></blockquote></td></tr><tr id="Const_AUTH_SERVICE_PATH"><td><code>AUTH_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/auth"</code></td></tr><tr><td colspan="3"><blockquote>权限RPC路径
 <br/></blockquote></td></tr><tr id="Const_ADMIN_SERVICE_PATH"><td><code>ADMIN_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/admin"</code></td></tr><tr><td colspan="3"><blockquote>管理操作RPC路径
 <br/></blockquote></td></tr><tr id="Const_TABLE_SERVICE_PATH"><td><code>TABLE_SERVICE_PATH</code></td><td><code>string</code></td><td><code>"/v1/api/table"</code></td></tr><tr><td colspan="3"><blockquote>表数据访问RPC路径
+<br/></blockquote></td></tr><tr id="Const_SCAN_COUNT"><td><code>SCAN_COUNT</code></td><td><code>string</code></td><td><code>"count"</code></td></tr><tr><td colspan="3"><blockquote>开启ScanAction时， 获取操作数据的数目的key值
 <br/></blockquote></td></tr><tr id="Const_DEFAULT_THRIFT_HEADER"><td><code>DEFAULT_THRIFT_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift"</code></td></tr><tr><td colspan="3"><blockquote>兼容其它SDK，等同于application/x-thrift-json
 <br/></blockquote></td></tr><tr id="Const_THRIFT_JSON_HEADER"><td><code>THRIFT_JSON_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-json"</code></td></tr><tr id="Const_THRIFT_COMPACT_HEADER"><td><code>THRIFT_COMPACT_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-compact"</code></td></tr><tr id="Const_THRIFT_BINARY_HEADER"><td><code>THRIFT_BINARY_HEADER</code></td><td><code>string</code></td><td><code>"application/x-thrift-binary"</code></td></tr><tr id="Const_THRIFT_HEADER_MAP"><td><code>THRIFT_HEADER_MAP</code></td><td><code>map&lt;<code><a href="Common.html#Enum_ThriftProtocol">ThriftProtocol</a></code>, <code>string</code>&gt;</code></td><td><code>{ <code><a href="#Const_ThriftProtocol.TCOMPACT">ThriftProtocol.TCOMPACT</a></code> = "application/x-thrift-compact", <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code> = "application/x-thrift-json", <code><a href="#Const_ThriftProtocol.TBINARY">ThriftProtocol.TBINARY</a></code> = "application/x-thrift-binary" }</code></td></tr><tr id="Const_HEADER_THRIFT_MAP"><td><code>HEADER_THRIFT_MAP</code></td><td><code>map&lt;<code>string</code>, <code><a href="Common.html#Enum_ThriftProtocol">ThriftProtocol</a></code>&gt;</code></td><td><code>{ "application/x-thrift-compact" = <code><a href="#Const_ThriftProtocol.TCOMPACT">ThriftProtocol.TCOMPACT</a></code>, "application/x-thrift-json" = <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code>, "application/x-thrift-binary" = <code><a href="#Const_ThriftProtocol.TBINARY">ThriftProtocol.TBINARY</a></code>, "application/x-thrift" = <code><a href="#Const_ThriftProtocol.TJSON">ThriftProtocol.TJSON</a></code> }</code></td></tr><tr id="Const_HK_REQUEST_TIMEOUT"><td><code>HK_REQUEST_TIMEOUT</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Request-Timeout"</code></td></tr><tr><td colspan="3"><blockquote>HTTP请求的超时时限
 <br/></blockquote></td></tr><tr id="Const_HK_ERROR_CODE_HEADER"><td><code>HK_ERROR_CODE_HEADER</code></td><td><code>string</code></td><td><code>"X-Xiaomi-Error-Code"</code></td></tr><tr><td colspan="3"><blockquote>HTTP头的错误码
@@ -78,7 +80,7 @@ TBINARYProtocol
 <tr><td>2</td><td>minor</td><td><code>i32</code></td><td>次版本号，不同版本号之间向后兼容
 </td><td>optional</td><td><code>0</code></td></tr>
 <tr><td>3</td><td>patch</td><td><code>string</code></td><td>构建版本号，不同版本之间互相兼容
-</td><td>optional</td><td><code>"b34c53c6"</code></td></tr>
+</td><td>optional</td><td><code>"bf602faf"</code></td></tr>
 <tr><td>4</td><td>comments</td><td><code>string</code></td><td>附加信息
 </td><td>optional</td><td><code>""</code></td></tr>
 </table><br/>版本号，规则详见http://semver.org

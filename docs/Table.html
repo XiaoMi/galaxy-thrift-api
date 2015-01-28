@@ -46,6 +46,8 @@
 <a href="#Struct_RemoveResult">RemoveResult</a><br/>
 <a href="#Struct_Request">Request</a><br/>
 <a href="#Struct_Result">Result</a><br/>
+<a href="#Struct_ScanAction">ScanAction</a><br/>
+<a href="#Enum_ScanOp">ScanOp</a><br/>
 <a href="#Struct_ScanRequest">ScanRequest</a><br/>
 <a href="#Struct_ScanResult">ScanResult</a><br/>
 <a href="#Enum_SecondaryIndexConsistencyMode">SecondaryIndexConsistencyMode</a><br/>
@@ -221,6 +223,18 @@ App Secret登录写整表权限
 延迟删除, 可见
 <br/></td></tr>
 </table></div>
+<div class="definition"><h3 id="Enum_ScanOp">Enumeration: ScanOp</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>COUNT</code></td><td><code>0</code></td><td>
+统计满足查询条件的记录数
+<br/></td></tr>
+<tr><td><code>DELETE</code></td><td><code>1</code></td><td>
+删除满足查询条件的记录
+<br/></td></tr>
+<tr><td><code>UPDATE</code></td><td><code>2</code></td><td>
+更新满足条件的记录
+<br/></td></tr>
+</table></div>
 <div class="definition"><h3 id="Enum_BatchOp">Enumeration: BatchOp</h3>
 <br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>GET</code></td><td><code>1</code></td><td>
@@ -384,7 +398,13 @@ ACL设置，为appId到其配置的权限的映射
 <tr><td>1</td><td>startKey</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>stopKey</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>表分片信息，包括起始和结束的row key
-<br/></div><div class="definition"><h3 id="Struct_GetRequest">Struct: GetRequest</h3>
+<br/></div><div class="definition"><h3 id="Struct_ScanAction">Struct: ScanAction</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>action</td><td><code><a href="Table.html#Enum_ScanOp">ScanOp</a></code></td><td>scan时连带操作
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>request</td><td><code><a href="Table.html#Typedef_Request">Request</a></code></td><td>实际操作，不需要指定key
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetRequest">Struct: GetRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>keys</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>记录主键，必须包含主键所有的属性
@@ -458,6 +478,8 @@ ACL设置，为appId到其配置的权限的映射
 </td><td>optional</td><td><code>true</code></td></tr>
 <tr><td>11</td><td>lookAheadStep</td><td><code>i32</code></td><td>查找属性在seek之前进行顺序skip的次数。非必要情况，请不要设置
 </td><td>optional</td><td><code>0</code></td></tr>
+<tr><td>12</td><td>action</td><td><code><a href="Table.html#Struct_ScanAction">ScanAction</a></code></td><td>scan时的连带操作，包括COUNT，DELETE和UPDATE
+</td><td>optional</td><td></td></tr>
 </table><br/>范围查询，支持主键和二级索引查询，
 查询范围为闭开区间[startKey, endKey)，
 当指定索引时，查询范围的entity group必须唯一指定
