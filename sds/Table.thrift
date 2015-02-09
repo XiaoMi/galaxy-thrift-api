@@ -474,33 +474,6 @@ struct TableSplit {
   2: optional Dictionary stopKey,
 }
 
-enum ScanOp {
-  /**
-   * 统计满足查询条件的记录数
-   */
-  COUNT,
-  /**
-   * 删除满足查询条件的记录
-   */
-  DELETE,
-  /**
-   * 更新满足条件的记录
-   */
-  UPDATE,
-}
-
-struct ScanAction {
-  /**
-   * scan时连带操作
-   */
-  1: optional ScanOp action,
-  /**
-   * 实际操作，不需要指定key
-   */
-  2: optional Request request,
-}
-
-
 struct GetRequest {
   1: optional string tableName,
   /**
@@ -574,6 +547,51 @@ struct RemoveResult {
    * 删除操作是否被执行（是否满足设置的条件）
    */
   1: optional bool success,
+}
+
+union Request {
+  /**
+   * 随机读操作
+   */
+  1: optional GetRequest getRequest,
+  /**
+   * 写入操作，不支持条件
+   */
+  2: optional PutRequest putRequest,
+  /**
+   * 自增操作
+   */
+  3: optional IncrementRequest incrementRequest,
+  /**
+   * 删除操作，不支持条件
+   */
+  4: optional RemoveRequest removeRequest,
+}
+
+enum ScanOp {
+  /**
+   * 统计满足查询条件的记录数
+   */
+  COUNT,
+  /**
+   * 删除满足查询条件的记录
+   */
+  DELETE,
+  /**
+   * 更新满足条件的记录
+   */
+  UPDATE,
+}
+
+struct ScanAction {
+  /**
+   * scan时连带操作
+   */
+  1: optional ScanOp action,
+  /**
+   * 实际操作，不需要指定key
+   */
+  2: optional Request request,
 }
 
 /**
@@ -659,25 +677,6 @@ enum BatchOp {
   PUT = 2,
   INCREMENT = 3,
   REMOVE = 4,
-}
-
-union Request {
-  /**
-   * 随机读操作
-   */
-  1: optional GetRequest getRequest,
-  /**
-   * 写入操作，不支持条件
-   */
-  2: optional PutRequest putRequest,
-  /**
-   * 自增操作
-   */
-  3: optional IncrementRequest incrementRequest,
-  /**
-   * 删除操作，不支持条件
-   */
-  4: optional RemoveRequest removeRequest,
 }
 
 struct BatchRequestItem {

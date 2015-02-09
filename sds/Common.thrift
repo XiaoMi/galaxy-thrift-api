@@ -66,7 +66,7 @@ struct Version {
   /**
    * 构建版本号，不同版本之间互相兼容
    */
-  3: optional string patch = 'bf602faf',
+  3: optional string patch = '86466534',
   /**
    * 附加信息
    */

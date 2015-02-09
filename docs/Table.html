@@ -398,13 +398,7 @@ ACL设置，为appId到其配置的权限的映射
 <tr><td>1</td><td>startKey</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>stopKey</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>表分片信息，包括起始和结束的row key
-<br/></div><div class="definition"><h3 id="Struct_ScanAction">Struct: ScanAction</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>action</td><td><code><a href="Table.html#Enum_ScanOp">ScanOp</a></code></td><td>scan时连带操作
-</td><td>optional</td><td></td></tr>
-<tr><td>2</td><td>request</td><td><code><a href="Table.html#Typedef_Request">Request</a></code></td><td>实际操作，不需要指定key
-</td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetRequest">Struct: GetRequest</h3>
+<br/></div><div class="definition"><h3 id="Struct_GetRequest">Struct: GetRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>2</td><td>keys</td><td><code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code></td><td>记录主键，必须包含主键所有的属性
@@ -449,6 +443,22 @@ ACL设置，为appId到其配置的权限的映射
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>success</td><td><code>bool</code></td><td>删除操作是否被执行（是否满足设置的条件）
 </td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Request">Union: Request</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>getRequest</td><td><code><a href="Table.html#Struct_GetRequest">GetRequest</a></code></td><td>随机读操作
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>putRequest</td><td><code><a href="Table.html#Struct_PutRequest">PutRequest</a></code></td><td>写入操作，不支持条件
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>incrementRequest</td><td><code><a href="Table.html#Struct_IncrementRequest">IncrementRequest</a></code></td><td>自增操作
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>removeRequest</td><td><code><a href="Table.html#Struct_RemoveRequest">RemoveRequest</a></code></td><td>删除操作，不支持条件
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ScanAction">Struct: ScanAction</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>action</td><td><code><a href="Table.html#Enum_ScanOp">ScanOp</a></code></td><td>scan时连带操作
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>request</td><td><code><a href="Table.html#Struct_Request">Request</a></code></td><td>实际操作，不需要指定key
+</td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ScanRequest">Struct: ScanRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tableName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
@@ -490,16 +500,6 @@ ACL设置，为appId到其配置的权限的映射
 <tr><td>2</td><td>records</td><td><code>list&lt;<code><a href="Table.html#Typedef_Dictionary">Dictionary</a></code>&gt;</code></td><td>扫描的记录
 </td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>throttled</td><td><code>bool</code></td><td>是否超过表的qps quota
-</td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Request">Union: Request</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>getRequest</td><td><code><a href="Table.html#Struct_GetRequest">GetRequest</a></code></td><td>随机读操作
-</td><td>optional</td><td></td></tr>
-<tr><td>2</td><td>putRequest</td><td><code><a href="Table.html#Struct_PutRequest">PutRequest</a></code></td><td>写入操作，不支持条件
-</td><td>optional</td><td></td></tr>
-<tr><td>3</td><td>incrementRequest</td><td><code><a href="Table.html#Struct_IncrementRequest">IncrementRequest</a></code></td><td>自增操作
-</td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>removeRequest</td><td><code><a href="Table.html#Struct_RemoveRequest">RemoveRequest</a></code></td><td>删除操作，不支持条件
 </td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_BatchRequestItem">Struct: BatchRequestItem</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
