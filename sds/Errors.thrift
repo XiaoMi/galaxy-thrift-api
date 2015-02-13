@@ -191,5 +191,9 @@ exception ServiceException {
    * RPC调用标识
    */
   4: optional string callId,
+  /**
+   * 请求标识
+   */
+  5: optional string requestId,
 }
 
